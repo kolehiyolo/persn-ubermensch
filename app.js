@@ -112,26 +112,49 @@ app.get("/compose/:date", function (req, res) {
 });
 
 // -* Dynamic Post Route
-app.get("/post/:postID", function (req, res) {
-  console.log(`GET request for Post ${req.params.postID}`);
+app.get("/post/:postDate", function (req, res) {
+  console.log(`GET request for Post ${req.params.postDate}`);
   console.log(`\n`);
 
-  if (
-    req.params.postID < data.posts.length &&
-    req.params.postID >= 0 &&
-    Number.isInteger(parseInt(req.params.postID))
-  ) {
-    res.render("modules/post", {
-      post: data.posts[req.params.postID]
-    });
-  } else {
-    res.render("modules/post", {
-      post: {
-        title: "Error",
-        body: `Post ${req.params.postID} Not Found`
-      }
-    });
-  }
+  // ! WORKING
+  // * NOW WE NEED TO FIND THE POST ASSOCIATED
+
+  let postIndex = data.posts.findIndex((post)=>{
+    console.log(post.stamp.date.code);
+    console.log(req.params.postDate);  
+    return post.stamp.date.code == req.params.postDate;
+  });
+  console.log(`postIndex = ${postIndex}`); 
+  let post = data.posts[postIndex];
+
+  let postTitle = post.title;
+  let postBody = post.content;
+
+  // let postTitle = `Title`;
+  // let postBody = `I am the body`;
+
+  res.render("modules/post", {
+    pageHeader: req.params.postDate,
+    postTitle: postTitle,
+    postBody: postBody,
+  });
+
+  // if (
+  //   req.params.postID < data.posts.length &&
+  //   req.params.postID >= 0 &&
+  //   Number.isInteger(parseInt(req.params.postID))
+  // ) {
+  //   res.render("modules/post", {
+  //     post: data.posts[req.params.postID]
+  //   });
+  // } else {
+  //   res.render("modules/post", {
+  //     post: {
+  //       title: "Error",
+  //       body: `Post ${req.params.postID} Not Found`
+  //     }
+  //   });
+  // }
 });
 
 // -* POST Compose

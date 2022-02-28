@@ -57,14 +57,20 @@
 
         let activeCalendarPage = calendarJS.findCalendarPage(calendarJS.currentDate.year, calendarJS.currentDate.month);
 
-        calendarJS.buildCalendarHTML(activeCalendarPage, calendarJS.activeDate);
-
+        // calendarJS.buildCalendarHTML(activeCalendarPage, calendarJS.activeDate);
+        
         calendarJS.addEventListeners();
-    </script>
-    <!-- <script src="javascript/client/pseudodata.js"></script>
+        
+        let entryDB = <%-entryDBProxy%>;
+        
+        // console.log(<%-entryDBProxy%>); 
+        // console.log(entryDB); 
+        </script>
+    <script src="javascript/client/pseudodata.js"></script>
     <script>
-        buildCalendarDiv(activeCalendarPage);
-    </script> -->
+        calendarJS.buildCalendarHTML(activeCalendarPage, calendarJS.activeDate);
+        // buildCalendarDiv(activeCalendarPage);
+    </script>
 </body>
 
 </html>
