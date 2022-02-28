@@ -9,7 +9,7 @@ let posts = [{
     title: "Test Blog #1",
     stamp: {
         date: {
-            code: "2022-02-22",
+            code: "2022-04-22",
             string: "February 2nd, 2022",
             year: 2022,
             month: 3,

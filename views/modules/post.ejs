@@ -1,6 +1,26 @@
-<%- include(`../partials/header`) -%>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
-<h1><%=post.title%></h1>
-<p><%=post.content%></p>
+<!-- * HEAD -->
+<%- include(`../partials/head`) -%>
 
-<%- include(`../partials/footer`) -%>
+<!-- * BODY -->
+
+<body>
+
+    <!-- * Header -->
+    <%- include(`../partials/header`) -%>
+
+    <!-- * Main -->
+    <main class="main--post">
+        <h1><%-postTitle%></h1>
+        <p><%-postBody%></p>
+    </main>
+
+    <!-- * Footer -->
+    <%- include(`../partials/footer`) -%>
+
+    <script src="../javascript/client/calendar.js"></script>
+</body>
+
+</html>

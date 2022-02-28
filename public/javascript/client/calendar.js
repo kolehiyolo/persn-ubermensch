@@ -334,7 +334,13 @@ calendarJS.changeActiveDate = (year, month, date) => {
             let trail = `${year}`;
             trail += `-${(month < 10) ? `0${month}` : month}`;
             trail += `-${(date < 10) ? `0${date}` : date}`;
-            window.location.href = `/compose/${trail}`;
+
+            if ($(`.date--${year}-${month-1}-${date} .calendar--day--title`).length) {
+                alert(`WOWEE`);
+                window.location.href = `/post/${trail}`;
+            } else {
+                window.location.href = `/compose/${trail}`;
+            }
         } else {
             $(`.calendar--day--active`).addClass(`calendar--day--current`);
             $(`.calendar--day--active`).removeClass(`calendar--day--active`);
@@ -384,7 +390,7 @@ calendarJS.moveCalendarPage = (direction, state) => {
         activeDate.monthString = calendarJS.getMonthString(activeDate.month);
         activeDate.startDay = new Date(activeDate.year, activeDate.month, 1).getDay();
         activeDate.date = (activeDate.date > activeDate.count) ? activeDate.count : activeDate.date;
- 
+
         calendarJS.activeDate = activeDate;
 
         $(`.header--navbar--title--current--date-picker--input`).val(`${activeDate.year}-${(activeDate.month<9)?'0'+(activeDate.month+1):(activeDate.month+1)}-${(activeDate.date<10)?'0'+activeDate.date:activeDate.date}`);
