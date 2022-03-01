@@ -318,10 +318,8 @@ html {
       justify-content: stretch;
       gap: 20px; }
       html body .main--post h1 {
-        padding: 6.75px 13.5px;
         font-size: 25px; }
       html body .main--post p {
-        padding: 6.75px 13.5px;
         font-size: 14px; }
     html body .footer {
       padding: 20px 60px;
