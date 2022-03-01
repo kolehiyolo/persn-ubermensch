@@ -12,23 +12,9 @@ The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for t
 Where can I get some?
 There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.`;
 
+let global = {};
 
-function ellipsize(text) {
-    console.log(`ellipsize(${text})`);
-    let result = ``;
-    let limit = 150;
-
-    if (text.length > limit) {
-        result = text.slice(0, limit) + `...`;
-    } else {
-        result = text;
-    }
-
-    console.log(`result = ${result}`);
-    return result;
-};
-
-function buildSamples(count) {
+global.buildSamples = (count) => {
     console.log(`buildSamples(${count})`);
     let result = [];
 
@@ -37,7 +23,7 @@ function buildSamples(count) {
     }
 
     for (let i = 0; i < count; i++) {
-        let loremBorders = [getRandomInt(), getRandomInt()].sort((a,b)=>a-b);
+        let loremBorders = [getRandomInt(), getRandomInt()].sort((a, b) => a - b);
 
         let postTemp = {
             id: i,
@@ -54,7 +40,94 @@ function buildSamples(count) {
     return result;
 }
 
+global.ellipsize = (text) => {
+    console.log(`ellipsize(${text})`);
+    let result = ``;
+    let limit = 150;
+
+    if (text.length > limit) {
+        result = text.slice(0, limit) + `...`;
+    } else {
+        result = text;
+    }
+
+    console.log(`result = ${result}`);
+    return result;
+};
+
+global.stringifyDate = (year, month, date) => {
+    function getMonthString(month) {
+        // This returns the string equivalent of a month
+        return (month === 0) ? `January` :
+            (month === 1) ? `February` :
+            (month === 2) ? `March` :
+            (month === 3) ? `April` :
+            (month === 4) ? `May` :
+            (month === 5) ? `June` :
+            (month === 6) ? `July` :
+            (month === 7) ? `August` :
+            (month === 8) ? `September` :
+            (month === 9) ? `October` :
+            (month === 10) ? `November` :
+            `December`;
+    }
+
+    function cardinalize(date) {
+        let rem = date % 10;
+
+        let suffix = (rem === 1 && date != 11) ? `st` :
+            (rem === 2 && date != 12) ? `nd` :
+            (rem === 3 && date != 13) ? `rd` :
+            `th`;
+
+        return `${date}${suffix}`;
+    }
+
+    return `${getMonthString(month)} ${cardinalize(date)}, ${year}`;
+}
+
+global.codifyDate = (year, month, date) => {
+    month++;
+    return `${year}-${(month<9)?`0`+month:month}-${(date<10)?`0`+date:date}`;
+}
+
+global.stringifyTime = (hours, minutes, seconds, timezone) => {
+    // let expected = `11:12:53`;
+    // `${hours}:${minutes}:${seconds}`
+
+    hours = (hours < 9) ? `0` + hours : hours;
+    minutes = (minutes < 9) ? `0` + minutes : minutes;
+    seconds = (seconds < 9) ? `0` + seconds : seconds;
+
+    return `${hours}:${minutes}:${seconds}`;
+}
+
+global.codifyTime = (hours, minutes, seconds, timezone) => {
+    let expected = `07:12:53 PM GMT+8`;
+
+    let meridiem;
+
+    if (hours > 12) {
+        meridiem = `PM`;
+        hours = hours - 12;
+    } else {
+        meridiem = `AM`;
+    }
+
+    hours = (hours < 9) ? `0` + hours : hours;
+    minutes = (minutes < 9) ? `0` + minutes : minutes;
+    seconds = (seconds < 9) ? `0` + seconds : seconds;
+    timezone = (timezone >= 0) ? `+` + timezone : timezone;
+
+    return `${hours}:${minutes}:${seconds} ${meridiem} GMT${timezone}`;
+}
+
+
 module.exports = {
-    ellipsize: ellipsize,
-    buildSamples: buildSamples
+    // buildSamples: global.buildSamples,
+    ellipsize: global.ellipsize,
+    codifyDate: global.codifyDate,
+    stringifyDate: global.stringifyDate,
+    codifyTime: global.codifyTime,
+    stringifyTime: global.stringifyTime,
 }

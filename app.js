@@ -4,6 +4,12 @@ const app = express();
 const bodyParser = require("body-parser");
 // const ejs = require("ejs");
 const lodash = require("lodash");
+const {
+  Post
+} = require("./public/javascript/server/data");
+const {
+  result
+} = require("lodash");
 
 // -* Not sure what this does lol
 app.use(bodyParser.urlencoded({
@@ -17,144 +23,102 @@ app.set('view engine', 'ejs');
 app.use(express.static(__dirname + `/public`));
 
 // * DEMO DATA
-const data = require(`${__dirname}/public/javascript/data.js`);
+const data = require(`${__dirname}/public/javascript/server/data.js`);
+const kolehiyolo = require(`${__dirname}/public/javascript/server/functions.js`);
 
 // * EXPRESS ROUTES
 // -* Home Route
-app.get("/", function (req, res) {
+app.get("/", function (req, res) { // * OKAY
   console.log(`GET request for Home Page`);
   console.log(`\n`);
 
-  // data.Entry.find({},(error,result)=>{
+  // let test = kolehiyolo.stringifyDate(1998,0,21);
+  // console.log(test); 
+
+  // let test = kolehiyolo.stringifyTime(14,1,21,8);
+  // console.log(test); 
+
+  // let test = kolehiyolo.codifyTime(14,1,21,8);
+  // console.log(test); 
+
+  function buildHeaderCalendarPicker() {
+    let min = `1950-01-01`;
+    let max = `2050-12-31`;
+
+    let result = ``;
+    result += `<div class="header--navbar--title--current--date-picker">`;
+    result += `<p></p>`;
+    result += `<input
+    class="header--navbar--title--current--date-picker--input"
+    id="date"
+    name="date"
+    type="date"
+    value="" min="${min}" max="${max}">`;
+    result += `</div>`;
+    return result;
+  }
+
+  data.model.Post.find({}, (error, result) => {
+    if (error) {
+      console.log(error);
+    } else {
+      res.render(`modules/home`, {
+        pageHeader: buildHeaderCalendarPicker(),
+        entryDBProxy: JSON.stringify(result),
+      });
+    }
+  });
+
+  // data.Post.findById(`621df9b0ec8e4dd7b2962b63`,(error,result)=>{
   //   if (error) {
   //     console.log(error); 
   //   } else {
-  //     console.log(`Fetched items successfully`);
-
+  //     console.log(result); 
   //     res.render(`modules/home`, {
-  //       sample: data.homeStartingContent,
-  //       postsArray: data.posts
+  //       pageHeader: headerCalendarPicker,
+  //       entryDBProxy: JSON.stringify(result),
   //     });
   //   }
   // });
 
-  let headerCalendarPicker = ``;
-  headerCalendarPicker += `<div class="header--navbar--title--current--date-picker">`;
-  headerCalendarPicker += `<p></p>`;
-  headerCalendarPicker += `<input class="header--navbar--title--current--date-picker--input" id="date" name="date" type="date" value="" max="2050-12-31" min="1950-01-01">`;
-  headerCalendarPicker += `</div>`;
+  // res.render(`modules/home`, {
+  //   postsArray: data.posts,
+  //   pageHeader: headerCalendarPicker,
+  //   entryDBProxy: JSON.stringify(data.posts),
+  // });
 
-  // let entryDBProxy = JSON.stringify(data.posts).replace(/\&#34;/gm,"");
-  // let entryDBProxy = JSON.stringify(data.posts);
-  // console.log(entryDBProxy); 
-
-  // console.log(JSON.stringify(data.posts));
-  res.render(`modules/home`, {
-    sample: data.homeStartingContent,
-    postsArray: data.posts,
-    pageHeader: headerCalendarPicker,
-    // entryDB: "what",
-    // entryDB: JSON.stringify(data.posts),
-    // entryDBProxy: data.posts,
-    entryDBProxy: JSON.stringify(data.posts),
-  });
 });
 
 // -* About Route
-app.get("/about", function (req, res) {
-  console.log(`GET request for About Page`);
-  console.log(`\n`);
+// app.get("/about", function (req, res) {
+//   console.log(`GET request for About Page`);
+//   console.log(`\n`);
 
-  res.render(`modules/about`, {
-    sample: data.aboutContent
-  });
-});
+//   res.render(`modules/about`, {
+//     sample: data.aboutContent
+//   });
+// });
 
 // -* Contact Route
-app.get("/contact", function (req, res) {
-  console.log(`GET request for Contact Page`);
-  console.log(`\n`);
+// app.get("/contact", function (req, res) {
+//   console.log(`GET request for Contact Page`);
+//   console.log(`\n`);
 
-  res.render(`modules/contact`, {
-    sample: data.contactContent
-  });
-});
+//   res.render(`modules/contact`, {
+//     sample: data.contactContent
+//   });
+// });
 
-// -* Compose Route
-app.get("/compose", function (req, res) {
-  console.log("GET request for Compose Page");
-  console.log(`\n`);
-
-  res.render("modules/compose", {
-    sample: "",
-    pageHeader: `New Post`,
-    date: ``,
-    // year: ``,
-    // month: ``,
-    // date: ``
-  });
-});
-
+// -* GET Compose Route
 app.get("/compose/:date", function (req, res) {
   console.log("GET request for Compose Page");
   console.log(`\n`);
-
-  // const stuff = req.params.date.split(`-`);
 
   res.render("modules/compose", {
     sample: "",
     pageHeader: `New Post`,
     date: req.params.date,
-    // year: stuff[0],
-    // month: (stuff[1] < 10) ? `0${stuff[1]}` : stuff[1],
-    // date: (stuff[2] < 10) ? `0${stuff[2]}` : stuff[2]
   });
-});
-
-// -* Dynamic Post Route
-app.get("/post/:postDate", function (req, res) {
-  console.log(`GET request for Post ${req.params.postDate}`);
-  console.log(`\n`);
-
-  // ! WORKING
-  // * NOW WE NEED TO FIND THE POST ASSOCIATED
-
-  let postIndex = data.posts.findIndex((post)=>{
-    console.log(post.stamp.date.code);
-    console.log(req.params.postDate);  
-    return post.stamp.date.code == req.params.postDate;
-  });
-  console.log(`postIndex = ${postIndex}`); 
-  let post = data.posts[postIndex];
-
-  let postTitle = post.title;
-  let postBody = post.content;
-
-  // let postTitle = `Title`;
-  // let postBody = `I am the body`;
-
-  res.render("modules/post", {
-    pageHeader: req.params.postDate,
-    postTitle: postTitle,
-    postBody: postBody,
-  });
-
-  // if (
-  //   req.params.postID < data.posts.length &&
-  //   req.params.postID >= 0 &&
-  //   Number.isInteger(parseInt(req.params.postID))
-  // ) {
-  //   res.render("modules/post", {
-  //     post: data.posts[req.params.postID]
-  //   });
-  // } else {
-  //   res.render("modules/post", {
-  //     post: {
-  //       title: "Error",
-  //       body: `Post ${req.params.postID} Not Found`
-  //     }
-  //   });
-  // }
 });
 
 // -* POST Compose
@@ -162,57 +126,106 @@ app.post("/compose", function (req, res) {
   console.log(`POST request for Compose`);
   console.log(`\n`);
 
-  // const post = {
-  //   id: data.posts.length,
-  //   date: "2022-02-02",
-  //   title: req.body.title,
-  //   body: req.body.post,
-  //   link: `/post/${data.posts.length}`
-  // };
+  function createPost() {
+    const stampDate = new Date();
+    const dateDate = req.body.date.split("-");
 
-  const saveDate = new Date();
-  const reqDate = req.body.date.split("-");
-  const stampDate = {
-    year: parseInt(reqDate[0]),
-    month: parseInt(reqDate[1])-1,
-    date: parseInt(reqDate[2])
+    let stamp = new data.model.Stamp({
+      code: "",
+      string: "",
+      year: stampDate.getFullYear(),
+      month: stampDate.getMonth(),
+      date: stampDate.getDate(),
+    });
+
+    let date = new data.model.Date({
+      code: "",
+      string: "",
+      year: parseInt(dateDate[0]),
+      month: parseInt(dateDate[1]) - 1,
+      date: parseInt(dateDate[2]),
+    });
+
+    // ! WORKING
+    const codeDate = kolehiyolo.codifyDate(stamp.year, stamp.month, stamp.date);
+    const stringDate = kolehiyolo.stringifyDate(stamp.year, stamp.month, stamp.date);
+
+    stamp.string = stringDate;
+    stamp.code = codeDate;
+    date.string = stringDate;
+    date.code = codeDate;
+
+    const time = new data.model.Time({
+      code: "",
+      string: "",
+      hour: 1,
+      minutes: 1,
+      seconds: 1,
+      timezone: 8,
+    });
+
+    time.code = kolehiyolo.codifyTime(time.hour,time.minutes,time.seconds,time.timezone);
+    time.string = kolehiyolo.stringifyTime(time.hour,time.minutes,time.seconds,time.timezone);
+
+    const stampCombi = new data.model.StampCombi({
+      date: stamp,
+      time: time,
+    });
+
+    const dateCombi = new data.model.DateCombi({
+      date: date,
+      time: time,
+    });
+
+    const editCombi = new data.model.StampCombi({
+      date: stamp,
+      time: time,
+    });
+
+    let result = new data.model.Post({
+      title: req.body.title,
+      body: req.body.body,
+      link: "Sample Link",
+      theme: "Sample Theme",
+      status: "Done",
+      stamp: stampCombi,
+      date: dateCombi,
+      edit: editCombi,
+    })
+    return result;
   }
 
-  const post = {
-    _id: data.posts.length,
-    title: req.body.title,
-    stamp: {
-      date: JSON.parse(JSON.stringify(stampDate)),
-      time: {
-        hour: 6,
-        minutes: 0,
-        seconds: 0
-      }
-    },
-    posted: {
-      date: {
-        year: parseInt(saveDate.getFullYear()),
-        month: parseInt(saveDate.getMonth()),
-        date: parseInt(saveDate.getDate())
-      },
-      time: {
-        hour: parseInt(saveDate.getHours()),
-        minutes: parseInt(saveDate.getMinutes()),
-        seconds: parseInt(saveDate.getSeconds()),
-      }
-    },
-    content: req.body.post,
-    image: "/images/test.img",
-    status: "Done"
-    // link: `/post/${data.posts.length}`
-  };
-
-  post.edited = JSON.parse(JSON.stringify(post.posted));
-
+  const post = createPost();
+  console.log(`POSTING THIS`); 
   console.log(post);
-  data.posts.push(post);
+  post.save();
 
   res.redirect("/");
+});
+
+
+// -* Dynamic Post Route
+app.get("/post/:postDate", function (req, res) {
+  console.log(`GET request for Post ${req.params.postDate}`);
+  console.log(`\n`);
+
+  data.model.Post.find({
+    'date.date.code': req.params.postDate
+  }, (error, result) => {
+    if (error) {
+      console.log(error);
+    } else {
+      let post = result[0];
+      let postTitle = post.title;
+      let postBody = post.body;
+
+      res.render(`modules/post`, {
+        pageHeader: req.params.postDate,
+        postTitle: postTitle,
+        postBody: postBody,
+      });
+    }
+  });
 });
 
 // * SERVER LISTENER
