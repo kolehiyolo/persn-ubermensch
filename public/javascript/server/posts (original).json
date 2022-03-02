@@ -1,4 +1,91 @@
-[{
+{
+    "_id": {
+        "$oid": "621df9b0ec8e4dd7b2962b63"
+    },
+    "title": "Nani desu ka",
+    "body": "hello dude",
+    "link": "sample link",
+    "theme": "sample theme",
+    "stamp": {
+        "date": {
+            "code": "2022-03-21",
+            "string": "March 21st, 2022",
+            "year": 2022,
+            "month": 2,
+            "date": 21,
+            "_id": {
+                "$oid": "621df9b0ec8e4dd7b2962b5e"
+            }
+        },
+        "time": {
+            "code": "19:54:16 UTC+8",
+            "string": "07:54:16 PM, UTC+8",
+            "hour": 19,
+            "minutes": 54,
+            "seconds": 16,
+            "timezone": 8,
+            "_id": {
+                "$oid": "621df9b0ec8e4dd7b2962b5f"
+            }
+        },
+        "_id": {
+            "$oid": "621df9b0ec8e4dd7b2962b60"
+        }
+    },
+    "for": {
+        "date": {
+            "code": "2022-03-21",
+            "string": "March 21st, 2022",
+            "year": 2022,
+            "month": 2,
+            "date": 21,
+            "_id": {
+                "$oid": "621df9b0ec8e4dd7b2962b5e"
+            }
+        },
+        "time": {
+            "code": "19:54:16 UTC+8",
+            "string": "07:54:16 PM, UTC+8",
+            "hour": 19,
+            "minutes": 54,
+            "seconds": 16,
+            "timezone": 8,
+            "_id": {
+                "$oid": "621df9b0ec8e4dd7b2962b5f"
+            }
+        },
+        "_id": {
+            "$oid": "621df9b0ec8e4dd7b2962b60"
+        }
+    },
+    "edited": {
+        "date": {
+            "code": "2022-03-21",
+            "string": "March 21st, 2022",
+            "year": 2022,
+            "month": 2,
+            "date": 21,
+            "_id": {
+                "$oid": "621df9b0ec8e4dd7b2962b5e"
+            }
+        },
+        "time": {
+            "code": "19:54:16 UTC+8",
+            "string": "07:54:16 PM, UTC+8",
+            "hour": 19,
+            "minutes": 54,
+            "seconds": 16,
+            "timezone": 8,
+            "_id": {
+                "$oid": "621df9b0ec8e4dd7b2962b5f"
+            }
+        },
+        "_id": {
+            "$oid": "621df9b0ec8e4dd7b2962b60"
+        }
+    },
+    "__v": 0
+} {
     "_id": {
         "$oid": "621dffa913363791f7dc382a"
     },
@@ -85,7 +172,7 @@
         }
     },
     "__v": 0
-}, {
+} {
     "_id": {
         "$oid": "621e1fd6b1ceb22565f90b0b"
     },
@@ -173,4 +260,4 @@
         }
     },
     "__v": 0
-}]
+}

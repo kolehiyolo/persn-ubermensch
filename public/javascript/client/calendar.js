@@ -336,7 +336,7 @@ calendarJS.changeActiveDate = (year, month, date) => {
             trail += `-${(date < 10) ? `0${date}` : date}`;
 
             if ($(`.date--${year}-${month-1}-${date} .calendar--day--title`).length) {
-                alert(`WOWEE`);
+                // alert(`WOWEE`);
                 window.location.href = `/post/${trail}`;
             } else {
                 window.location.href = `/compose/${trail}`;

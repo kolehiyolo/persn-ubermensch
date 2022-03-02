@@ -62,6 +62,7 @@ app.get("/", function (req, res) { // * OKAY
     if (error) {
       console.log(error);
     } else {
+      console.log(`ALL POSTS FETCH SUCCESSFUL`); 
       res.render(`modules/home`, {
         pageHeader: buildHeaderCalendarPicker(),
         entryDBProxy: JSON.stringify(result),
@@ -147,13 +148,13 @@ app.post("/compose", function (req, res) {
     });
 
     // ! WORKING
-    const codeDate = kolehiyolo.codifyDate(stamp.year, stamp.month, stamp.date);
-    const stringDate = kolehiyolo.stringifyDate(stamp.year, stamp.month, stamp.date);
+    // const codeDate = kolehiyolo.codifyDate(stamp.year, stamp.month, stamp.date);
+    // const stringDate = kolehiyolo.stringifyDate(stamp.year, stamp.month, stamp.date);
 
-    stamp.string = stringDate;
-    stamp.code = codeDate;
-    date.string = stringDate;
-    date.code = codeDate;
+    stamp.string = kolehiyolo.stringifyDate(stamp.year, stamp.month, stamp.date);
+    stamp.code = kolehiyolo.codifyDate(stamp.year, stamp.month, stamp.date);
+    date.string = kolehiyolo.stringifyDate(date.year, date.month, date.date);
+    date.code = kolehiyolo.codifyDate(date.year, date.month, date.date);
 
     const time = new data.model.Time({
       code: "",

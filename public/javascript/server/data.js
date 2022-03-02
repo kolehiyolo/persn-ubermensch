@@ -1,9 +1,12 @@
 let global = {};
 
+// mongoexport --collection="posts" --db="ubermenschDB" --out="W:\Developer\MongoDB\db\posts.json"
+
 global.activate = () => {
     // * Connect to DB with Mongoose
     global.mongoose = require(`mongoose`);
-    global.mongoose.connect(`mongodb://localhost:27017/ubermenschDB`);
+    // global.mongoose.connect(`mongodb://localhost:27017/ubermenschDB`);
+    global.mongoose.connect(`mongodb+srv://admin-kolehiyolo:Test123@cluster0.ys8lv.mongodb.net/ubermenschDB`);
 
     // * Dates Schema
     global.stampSchema = new global.mongoose.Schema({
@@ -147,6 +150,8 @@ global.activate = () => {
     global.Date = global.mongoose.model("date", global.dateSchema);
     global.StampCombi = global.mongoose.model("stampCombination", global.stampCombiSchema);
     global.DateCombi = global.mongoose.model("dateCombination", global.dateCombiSchema);
+
+    console.log(`data.activate() SUCCESSFUL`); 
 }
 
 global.test = () => {
