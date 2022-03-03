@@ -2,24 +2,23 @@ console.log(`RUNNING pseudodata.js`);
 
 function addEntriesToCalendarPages() {
     entryDB.forEach((entry, index) => {
-        // console.log(`Entry:`); 
-        // console.log(entry.date.date.year); 
-        // console.log(entry.date.date.month); 
-        // console.log(entry.date.date.date); 
-        // let calendarPage = findCalendarPage(entry.stamp.date.year, entry.stamp.date.month);
-        let calendarPageIndex = ((entry.date.date.year - calendarJS.minYear) * 12) + entry.stamp.date.month;
+        // console.log(`Entry # ${index} ${entry.date.date.code} ${entry.title}`); 
+        let calendarPageIndex = ((entry.date.date.year - calendarJS.minYear) * 12) + entry.date.date.month;
         let calendarPage = calendarJS.allCalendarPages[calendarPageIndex];
         let selectedDate = calendarPage.findIndex((pageEntry) => {
             return pageEntry.month === entry.date.date.month && pageEntry.date === entry.date.date.date;
         });
 
-        // console.log(`entryDB`); 
-        // console.log(calendarPage);
-        // console.log(selectedDate);  
+        let nextCalendarPage = calendarJS.allCalendarPages[calendarPageIndex + 1];
+        let nextSelectedDate = nextCalendarPage.findIndex((pageEntry) => {
+            return pageEntry.month === entry.date.date.month && pageEntry.date === entry.date.date.date;
+        });
 
+        // -* Let's check if the following page also has 
         calendarJS.allCalendarPages[calendarPageIndex][selectedDate].post = entry;
-        // console.log(calendarJS.allCalendarPages[calendarPageIndex][selectedDate]); 
-
+        if (nextSelectedDate != -1) {
+            calendarJS.allCalendarPages[calendarPageIndex + 1][nextSelectedDate].post = entry;
+        }
     });
 }
 
