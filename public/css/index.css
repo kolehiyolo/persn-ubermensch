@@ -11,17 +11,16 @@
   --color-primary-light: rgb(146, 201, 251);
   --color-dark: rgb(12, 80, 144);
   --color-element: rgb(15, 34, 58);
-  --color-element-translucent: rgba(22, 27, 34, 0.75);
   --color-element-lighter: rgb(39, 41, 42);
-  --color-background: rgba(13, 17, 23, 1);
+  --color-background: rgb(14, 14, 14);
   --color-background-2: rgb(12, 31, 56);
   --color-white: rgba(255, 255, 255, 1);
   --color-text: rgba(255, 255, 255, 1);
   --color-text-lighter: rgba(158, 158, 158, 1);
   --color-disabled: rgb(61, 61, 61);
   --color-border: rgb(47, 53, 60);
-  --gradient-stripe: linear-gradient(to right, #096fb8, #12d8fa, #a6f8ff);
-  --color-element-translucent: rgba(15, 34, 58, 0.50); }
+  --color-element-translucent: rgba(15, 34, 58, 0.50);
+  --gradient-stripe: linear-gradient(to right, #096fb8, #12d8fa, #a6f8ff); }
 
 :root {
   --font-serif: 'Merriweather', serif;
@@ -42,6 +41,8 @@ html {
     background-color: var(--color-background);
     display: flex;
     flex-direction: column; }
+    html body main {
+      flex-grow: 1; }
     html body .wave {
       z-index: 0;
       position: absolute;
@@ -56,17 +57,18 @@ html {
         height: 30vh; }
     html body .header {
       padding: 0;
-      margin: 0;
+      margin: 0 0 20px;
       position: relative;
       z-index: 10; }
       html body .header--navbar {
+        background-color: var(--color-element);
         width: 100vw;
-        padding: 20px 60px; }
+        padding: 10px 60px; }
         html body .header--navbar--title {
           color: var(--color-text);
           display: flex;
           flex-direction: row;
-          font-size: 20px;
+          font-size: 18px;
           gap: 10px; }
           html body .header--navbar--title--brand {
             font-weight: 500;
@@ -81,19 +83,18 @@ html {
               text-shadow: 0px 0px 4px white; }
               html body .header--navbar--title--brand:hover * {
                 color: var(--color-text) !important; }
-          html body .header--navbar--title--current {
+          html body .header--navbar--title--context {
             font-weight: 300;
-            font-style: italic;
             background-color: var(--color-background);
             background-color: rgba(44, 70, 102, 0);
             border: none;
             transition: all 0.25s;
             text-shadow: 0px 0px 2px rgba(255, 255, 255, 0); }
-            html body .header--navbar--title--current:hover {
+            html body .header--navbar--title--context:hover {
               text-shadow: 0px 0px 4px white; }
-            html body .header--navbar--title--current--date-picker {
+            html body .header--navbar--title--context--date-picker {
               position: relative; }
-              html body .header--navbar--title--current--date-picker--input {
+              html body .header--navbar--title--context--date-picker--input {
                 position: absolute;
                 top: 0;
                 left: 0;
@@ -106,7 +107,7 @@ html {
                 opacity: 0.5;
                 opacity: 0;
                 height: 100%; }
-              html body .header--navbar--title--current--date-picker input[type="date"]::-webkit-calendar-picker-indicator {
+              html body .header--navbar--title--context--date-picker input[type="date"]::-webkit-calendar-picker-indicator {
                 background: transparent;
                 bottom: 0;
                 color: transparent;
@@ -117,11 +118,9 @@ html {
                 right: 0;
                 top: 0;
                 width: auto; }
-        html body .header--navbar--menu ul {
+        html body .header--navbar--menu--ul {
           gap: 10px; }
-          html body .header--navbar--menu ul li a {
-            text-decoration: none; }
-          html body .header--navbar--menu ul li button {
+          html body .header--navbar--menu--ul--li--button {
             background-color: var(--color-element);
             border: none;
             padding: 0;
@@ -129,15 +128,18 @@ html {
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 15px; }
-            html body .header--navbar--menu ul li button i {
-              font-size: 24px;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px; }
+            html body .header--navbar--menu--ul--li--button i {
+              font-size: 20px;
               color: var(--color-text); }
-          html body .header--navbar--menu ul li .add {
-            background-image: var(--gradient-stripe);
-            border-radius: 15px; }
+            html body .header--navbar--menu--ul--li--button--add {
+              background-image: var(--gradient-stripe); }
+            html body .header--navbar--menu--ul--li--button--deleted {
+              background-color: var(--color-disabled); }
+          html body .header--navbar--menu--ul--li--mode__active {
+            background-color: var(--color-dark); }
     html body .main--calendar {
       flex-grow: 1;
       padding: 0px;
@@ -208,7 +210,7 @@ html {
                   background-color: var(--color-dark); }
                 html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--head .calendar--day p {
                   width: 100%;
-                  font-style: italic; }
+                  font-size: 16px; }
             html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--body {
               align-self: stretch;
               flex-grow: 1;
@@ -331,10 +333,10 @@ html {
       justify-content: stretch;
       gap: 20px; }
       html body .main--post h1 {
-        padding: 6.75px 13.5px;
+        padding: 6.75px 0px;
         font-size: 25px; }
       html body .main--post p {
-        padding: 6.75px 13.5px;
+        padding: 6.75px 0px;
         font-size: 14px; }
     html body .footer {
       padding: 20px 60px;
@@ -347,16 +349,22 @@ html {
         flex-direction: row;
         gap: 10px;
         align-items: center; }
-        html body .footer--socials .footer-links {
+        html body .footer--socials a {
           text-decoration: none;
           flex-grow: 1;
           flex-basis: 0; }
-          html body .footer--socials .footer-links i {
+          html body .footer--socials a i {
             width: 30px;
             text-align: center;
-            font-size: 25px; }
+            font-size: 20px;
+            color: var(--color-text-lighter);
+            transition: all 0.1s; }
+            html body .footer--socials a i:hover {
+              color: var(--color-primary); }
       html body .footer--copyright p {
         margin: 0;
         padding: 0;
         text-transform: uppercase;
-        font-style: italic; }
+        font-style: italic;
+        font-size: 14px;
+        color: var(--color-text-lighter); }

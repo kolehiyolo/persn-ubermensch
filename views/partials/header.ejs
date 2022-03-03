@@ -3,37 +3,64 @@
     <div class="header--navbar--title navbar-title">
       <a class="header--navbar--title--brand navbar-title-brand" href="/">über<span class="header--navbar--title--brand--blue">mensch</span>
       </a>
-      <span> | </span>
-      <button class="header--navbar--title--current"><%-pageHeader%></button>
+      <span class="header--navbar--title--divider"> | </span>
+      <button class="header--navbar--title--context"><%-pageHeader%></button>
     </div>
     <button class="header--navbar--toggler navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="header--navbar--menu collapse navbar-collapse flex-row-reverse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/deleted">
-            <i class="fa-solid fa-grip"></i>
-          </a>
-        </li>
-        <li class="nav-item">
-          <button class="nav-link active" aria-current="page" href="#">
-            <i class="fa-solid fa-grip"></i>
+      <ul class="header--navbar--menu--ul navbar-nav">
+        <!-- Month View -->
+        <li class="header--navbar--menu--ul--li nav-item">
+          <button type="button" class="header--navbar--menu--ul--li--button
+          header--navbar--menu--ul--li--mode--month header--navbar--menu--ul--li--mode__active
+          nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Month View" onclick="calendarJS.changeCalendarMode('month')">
+            <i class="fa-solid fa-calendar-days"></i>
           </button>
         </li>
-        <li class="nav-item">
-          <button class="nav-link" href="#">
-            <i class="fa-solid fa-pause"></i>
+        <!-- Week View -->
+        <li class="header--navbar--menu--ul--li nav-item">
+          <button type="button" class="header--navbar--menu--ul--li--button
+          header--navbar--menu--ul--li--mode--week 
+          nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Week View" onclick="calendarJS.changeCalendarMode('week')">
+            <i class="fa-solid fa-calendar-week"></i>
           </button>
         </li>
-        <li class="nav-item">
-          <!-- <a href="/compose"> -->
-          <button class="nav-link add" href="#" onclick="calendarJS.writeForToday()">
-            <i class="fa-solid fa-plus"></i>
+        <!-- Day View -->
+        <li class="header--navbar--menu--ul--li nav-item">
+          <button type="button" class="header--navbar--menu--ul--li--button
+          header--navbar--menu--ul--li--mode--day 
+          nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Day View" onclick="calendarJS.changeCalendarMode('day')">
+            <i class="fa-solid fa-calendar-day"></i>
           </button>
-          <!-- </a> -->
+        </li>
+        <!-- Deleted Posts -->
+        <li class="header--navbar--menu--ul--li nav-item">
+          <button type="button" class="header--navbar--menu--ul--li--button header--navbar--menu--ul--li--button--deleted nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Deleted Posts" onclick="calendarJS.routeToDeleted()">
+            <i class="fa-solid fa-calendar-xmark"></i>
+          </button>
+        </li>
+        <!-- Write a Post -->
+        <li class="header--navbar--menu--ul--li nav-item">
+          <button type="button" class="header--navbar--menu--ul--li--button header--navbar--menu--ul--li--button--add nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Write a Post" onclick="calendarJS.writeForToday()">
+            <i class="fa-solid fa-calendar-plus"></i>
+          </button>
         </li>
       </ul>
     </div>
   </nav>
 </header>
+<script type="text/javascript">
+  // $(function () {
+  //     $("[rel='tooltip']").tooltip();
+  // });
+  var tooltips = document.querySelectorAll('.btn-tt')
+  tooltips.forEach(t => {
+    new bootstrap.Tooltip(t)
+  })
+  // var tooltip = new bootstrap.Tooltip(exampleEl, {
+  //   boundary: document.body // or document.querySelector('#boundary')
+  // })
+  // $("[data-toggle=tooltip").tooltip();
+</script>

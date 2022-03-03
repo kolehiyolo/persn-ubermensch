@@ -46,10 +46,10 @@ app.get("/", function (req, res) { // * OKAY
     let max = `2050-12-31`;
 
     let result = ``;
-    result += `<div class="header--navbar--title--current--date-picker">`;
+    result += `<div class="header--navbar--title--context--date-picker">`;
     result += `<p></p>`;
     result += `<input
-    class="header--navbar--title--current--date-picker--input"
+    class="header--navbar--title--context--date-picker--input"
     id="date"
     name="date"
     type="date"

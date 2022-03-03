@@ -88,6 +88,10 @@ html {
         display:flex;
         flex-direction: column;
 
+        main {
+            flex-grow: 1;
+        }
+
         .wave {
             z-index: 0;
             position: absolute;
