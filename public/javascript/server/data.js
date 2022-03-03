@@ -150,6 +150,7 @@ global.activate = () => {
     global.Date = global.mongoose.model("date", global.dateSchema);
     global.StampCombi = global.mongoose.model("stampCombination", global.stampCombiSchema);
     global.DateCombi = global.mongoose.model("dateCombination", global.dateCombiSchema);
+    global.Deleted = global.mongoose.model("deleted", global.postSchema);
 
     console.log(`data.activate() SUCCESSFUL`); 
 }
@@ -204,5 +205,6 @@ module.exports = {
         Date: global.Date,
         StampCombi: global.StampCombi,
         DateCombi: global.DateCombi,
+        Deleted: global.Deleted
     },
 }

@@ -434,3 +434,12 @@ calendarJS.addEventListeners = () => {
         calendarJS.changeActiveDate(date.year, date.month, date.date);
     });
 }
+
+calendarJS.deleteReroute = (date) => {
+    console.log(date); 
+    // window.location.href = `/delete/${date}`;
+};
+calendarJS.editReroute = (date) => {
+    console.log(date); 
+    // window.location.href = `/edit/${date}`;
+};

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- * HEAD -->
+<%- include(`../partials/head`) -%>
+
+<!-- * BODY -->
+
+<body>
+
+    <!-- * Header -->
+    <%- include(`../partials/header`) -%>
+
+    <!-- * Main -->
+    <main class="main--deleted">
+        <!-- <p><%=entryDBProxy%></p> -->
+    </main>
+
+
+    <!-- * Footer -->
+    <%- include(`../partials/footer`) -%>
+
+    <script src="../javascript/client/deleted.js"></script>
+
+    <script>
+        deletedJS.buildAllDeletedHTML( <%-entryDBProxy%> );
+    </script>
+</body>
+
+</html>

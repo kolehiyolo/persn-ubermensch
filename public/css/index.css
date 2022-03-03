@@ -310,6 +310,18 @@ html {
           font-size: 14px;
           height: 100%;
           flex-grow: 1; }
+    html body .main--deleted {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      padding: 0px 60px; }
+      html body .main--deleted--post {
+        padding: 20px;
+        border: white solid 1px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        border-radius: 5px; }
     html body .main--post {
       flex-grow: 1;
       padding: 0px 60px;

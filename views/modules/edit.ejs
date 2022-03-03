@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<!-- * HEAD -->
+<%- include(`../partials/head`) -%>
+
+<!-- * BODY -->
+
+<body>
+
+    <!-- * Header -->
+    <%- include(`../partials/header`) -%>
+
+    <!-- * Main -->
+    <main class="main--compose">
+        <!-- <h1>Compose</h1> -->
+        <form action="/edit" method="POST" class="main--compose--form">
+            <div class="main--compose--form--header">
+                <div class="main--compose--form--header--title form-group">
+                    <!-- <label class="form-label" for="title">Title</label> -->
+                    <input class="form-control compose-title" id="title" name="title" type="text" placeholder="Write your title here..." value="<%=postTitle%>">
+                </div>
+                <div class="main--compose--form--header--date form-group">
+                    <!-- <label class="form-label" for="title">Title</label> -->
+                    <input class="form-control compose-date" id="date" name="date" type="date" value="<%=date%>" placeholder="Write your title here...">
+                </div>
+            </div>
+            <div class="main--compose--form--body">
+                <div class="main--compose--form--body--body form-group">
+                    <!-- <label class="form-label" for="post">Post</label> -->
+                    <textarea class="form-control compose-body" id="body" name="body" placeholder="Write your thoughts here..."><%=postBody%></textarea>
+                </div>
+            </div>
+            <div class="main--compose--form--footer">
+                <div class="main--compose--form--footer--submit form-group">
+                    <button class="btn btn-primary compose-submit" name="submit" type="submit">Publish</button>
+                </div>
+                <div class="main--compose--form--footer--draft form-group">
+                    <button class="btn btn-primary compose-draft" name="draft" type="submit">Draft</button>
+                </div>
+            </div>
+        </form>
+    </main>
+
+    <!-- * Footer -->
+    <%- include(`../partials/footer`) -%>
+
+    <!-- <script src="../javascript/client/calendar.js"></script> -->
+</body>
+
+</html>
