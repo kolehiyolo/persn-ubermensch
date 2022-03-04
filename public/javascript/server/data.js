@@ -5,8 +5,8 @@ let global = {};
 global.activate = () => {
     // * Connect to DB with Mongoose
     global.mongoose = require(`mongoose`);
-    global.mongoose.connect(`mongodb://localhost:27017/ubermenschDB`);
-    // global.mongoose.connect(`mongodb+srv://admin-kolehiyolo:Test123@cluster0.ys8lv.mongodb.net/ubermenschDB`);
+    // global.mongoose.connect(`mongodb://localhost:27017/ubermenschDB`);
+    global.mongoose.connect(`mongodb+srv://admin-kolehiyolo:Test123@cluster0.ys8lv.mongodb.net/ubermenschDB`);
 
     // * Dates Schema
     global.stampSchema = new global.mongoose.Schema({

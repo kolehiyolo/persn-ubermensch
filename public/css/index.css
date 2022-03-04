@@ -230,9 +230,12 @@ html {
                   padding: 40px 20px 20px;
                   border-radius: 10px;
                   flex-grow: 1;
-                  position: relative; }
+                  position: relative;
+                  box-sizing: border-box;
+                  border: solid 2px var(--color-element); }
                   html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--body .calendar--week .calendar--day--noncurrent {
-                    background-color: var(--color-disabled); }
+                    background-color: rgba(0, 0, 0, 0);
+                    border-color: var(--color-disabled); }
                     html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--body .calendar--week .calendar--day--noncurrent .calendar--day--date {
                       background-color: var(--color-text-lighter); }
                   html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--body .calendar--week .calendar--day--active {
