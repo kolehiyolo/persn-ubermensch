@@ -25,6 +25,12 @@
 @import "extras/_colors.scss";
 
 :root {
+    // --font-serif: '04B-30', serif;
+    // --font-serif: "8-bit Arcade In", serif;
+    // --font-serif: "8-bit Arcade Out", serif;
+    // --font-serif: "Minecraft";
+    // --font-serif: "He's Dead Jim";
+    // --font-sans-serif: 'Space Mono', monospace;
     --font-serif: 'Merriweather', serif;
     --font-sans-serif: 'Montserrat', sans-serif;
 }
@@ -53,10 +59,7 @@ html {
         display: flex;
         flex-direction: column;
 
-        // * Header
-        @import "partials/header.scss";
-
-        .main {
+        main {
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -64,23 +67,43 @@ html {
 
             // * Calendar Month View
             @import "main/calendar-month.scss";
+        }
 
-            // * Compose Components
-            @import "main/compose.scss";
+        .wave {
+            z-index: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            // background-color: #f3f4f5;
 
-            // * Post Components
-            @import "main/post.scss";
+            &--top {
+                // background-color: #f3f4f5;
+                background-color: rgb(44, 70, 102);
+                background-color: rgb(44, 70, 102);
+                width: 100%;
+                height: 30vh;
+            }
+
+            &--bottom {}
 
         }
 
+        // * Header
+        @import "partials/header.scss";
+
         // * Main
-        // @import "partials/main.scss";
+        @import "partials/main.scss";
 
-        // // * Compose
+        // * Compose
+        @import "partials/compose.scss";
 
-        // // * Compose
-        // @import "partials/deleted.scss";
+        // * Compose
+        @import "partials/deleted.scss";
 
+        // * Post
+        @import "partials/post.scss";
 
         // * Footer
         @import "partials/footer.scss";

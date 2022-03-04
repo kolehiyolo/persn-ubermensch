@@ -23,6 +23,13 @@
   --gradient-stripe: linear-gradient(to right, #096fb8, #12d8fa, #a6f8ff); }
 
 :root {
+  --color-background: rgb(1, 4, 9);
+  --color-element: rgb(22, 27, 34);
+  --color-element-active: rgb(19, 35, 58);
+  --color-border-active: rgb(30, 66, 115);
+  --color-text: rgba(255, 255, 255, 1); }
+
+:root {
   --font-serif: 'Merriweather', serif;
   --font-sans-serif: 'Montserrat', sans-serif; }
 
@@ -41,20 +48,6 @@ html {
     background-color: var(--color-background);
     display: flex;
     flex-direction: column; }
-    html body main {
-      flex-grow: 1; }
-    html body .wave {
-      z-index: 0;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh; }
-      html body .wave--top {
-        background-color: #2c4666;
-        background-color: #2c4666;
-        width: 100%;
-        height: 30vh; }
     html body .header {
       padding: 0;
       margin: 0 0 20px;
@@ -140,207 +133,207 @@ html {
               background-color: var(--color-disabled); }
           html body .header--navbar--menu--ul--li--mode__active {
             background-color: var(--color-dark); }
-    html body .main--calendar {
+    html body .main {
       flex-grow: 1;
-      padding: 0px;
-      position: relative;
       display: flex;
       flex-direction: column;
       justify-content: stretch; }
-      html body .main--calendar .carousel {
+      html body .main--calendar {
+        flex-grow: 1;
+        padding: 0px;
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: stretch;
-        align-self: stretch;
-        flex-grow: 1;
-        flex-basis: auto; }
-        html body .main--calendar .carousel .calendar--button {
-          position: absolute;
-          top: 50%;
-          z-index: 10;
-          border: none;
-          background-color: var(--color-element-translucent);
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          padding: 20px;
-          border-radius: 50%;
-          width: 90px;
-          height: 90px; }
-          html body .main--calendar .carousel .calendar--button i {
-            color: var(--color-white);
-            font-size: 50px; }
-        html body .main--calendar .carousel .calendar--prev {
-          left: 60px;
-          transform: translate(-50%, -50%); }
-        html body .main--calendar .carousel .calendar--next {
-          right: 60px;
-          transform: translate(50%, -50%); }
-        html body .main--calendar .carousel .carousel-inner {
-          height: 100%;
-          align-self: stretch;
-          flex-grow: 1;
-          flex-basis: auto;
-          display: flex; }
-          html body .main--calendar .carousel .carousel-inner .carousel-item .calendar {
-            padding: 0px 60px;
-            align-self: stretch;
-            flex-grow: 1;
-            flex-basis: auto;
+        gap: 10px; }
+        html body .main--calendar--days {
+          padding: 0 60px; }
+          html body .main--calendar--days--head {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             justify-content: stretch;
-            gap: 10px;
-            height: 100%;
-            position: relative; }
-            html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--head {
-              display: flex;
-              flex-direction: row;
-              justify-content: stretch;
-              gap: 15px; }
-              html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--head .calendar--day {
-                border-radius: 10px;
-                flex-grow: 1;
-                flex-basis: 0;
-                text-align: center; }
-                html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--head .calendar--day--noncurrent {
-                  background-color: var(--color-disabled); }
-                html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--head .calendar--day--active {
-                  background-color: var(--color-dark); }
-                html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--head .calendar--day p {
-                  width: 100%;
-                  font-size: 16px; }
-            html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--body {
-              align-self: stretch;
+            gap: 10px; }
+            html body .main--calendar--days--head--day {
+              border-radius: 10px;
+              border: solid 2px var(--color-disabled);
               flex-grow: 1;
               flex-basis: 0;
+              text-align: center; }
+        html body .main--calendar--carousel {
+          display: flex;
+          flex-direction: column;
+          justify-content: stretch;
+          align-self: stretch;
+          flex-grow: 1;
+          flex-basis: auto; }
+          html body .main--calendar--carousel--button {
+            position: absolute;
+            top: 50%;
+            z-index: 10;
+            border: none;
+            background-color: var(--color-element-translucent);
+            background-color: rgba(0, 0, 0, 0);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0px;
+            width: 60px;
+            height: 100%; }
+            html body .main--calendar--carousel--button i {
+              color: var(--color-white);
+              font-size: 50px; }
+            html body .main--calendar--carousel--button--prev {
+              left: 0px;
+              transform: translate(0%, -50%); }
+            html body .main--calendar--carousel--button--next {
+              right: 0px;
+              transform: translate(0%, -50%); }
+          html body .main--calendar--carousel--inner {
+            flex-grow: 1;
+            display: flex; }
+            html body .main--calendar--carousel--inner--item--stretch {
+              padding: 0px 60px;
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              height: 100%; }
+              html body .main--calendar--carousel--inner--item--stretch--body {
+                flex-grow: 1;
+                flex-basis: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: stretch;
+                gap: 10px; }
+                html body .main--calendar--carousel--inner--item--stretch--body--week {
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: stretch;
+                  gap: 10px;
+                  height: 100%; }
+                  html body .main--calendar--carousel--inner--item--stretch--body--week--day {
+                    background-color: var(--color-element);
+                    border-radius: 10px;
+                    flex-grow: 1;
+                    flex-basis: 0;
+                    position: relative;
+                    border: solid 1px var(--color-element);
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: stretch; }
+                    html body .main--calendar--carousel--inner--item--stretch--body--week--day--upper {
+                      flex-grow: 0;
+                      padding: 5px;
+                      display: flex;
+                      flex-direction: row;
+                      width: 100%;
+                      border-radius: 10px 10px 0px 0px;
+                      background-color: var(--color-background) !important; }
+                      html body .main--calendar--carousel--inner--item--stretch--body--week--day--upper--date {
+                        border-radius: 10px;
+                        color: var(--color-primary);
+                        padding: 0px 10px;
+                        font-weight: bold;
+                        font-size: 13px;
+                        user-select: none; }
+                    html body .main--calendar--carousel--inner--item--stretch--body--week--day--lower {
+                      position: relative;
+                      flex-grow: 1;
+                      border-radius: 0px 0px 10px 10px; }
+                      html body .main--calendar--carousel--inner--item--stretch--body--week--day--lower--title {
+                        padding: 0px 10px;
+                        text-align: center;
+                        width: 100%;
+                        font-size: 12px;
+                        color: var(--color-white);
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        user-select: none; }
+                    html body .main--calendar--carousel--inner--item--stretch--body--week--day__noncurrent {
+                      background-color: rgba(0, 0, 0, 0);
+                      border-color: var(--color-disabled); }
+                      html body .main--calendar--carousel--inner--item--stretch--body--week--day__noncurrent .calendar--day--date {
+                        color: var(--color-text-lighter);
+                        background-color: var(--color-background); }
+                    html body .main--calendar--carousel--inner--item--stretch--body--week--day__active {
+                      background-color: var(--color-dark);
+                      border-color: var(--color-border-active); }
+                      html body .main--calendar--carousel--inner--item--stretch--body--week--day__active .calendar--day--date {
+                        background-color: var(--color-primary);
+                        color: var(--color-element-active); }
+                    html body .main--calendar--carousel--inner--item--stretch--body--week--day__current {
+                      background-color: var(--color-element-active);
+                      border-color: var(--color-border-active); }
+                      html body .main--calendar--carousel--inner--item--stretch--body--week--day__current .calendar--day--date {
+                        background-color: var(--color-primary-light);
+                        background-color: var(--color-white);
+                        background-color: var(--color-primary);
+                        background-color: var(--color-element-active); }
+      html body .main--compose {
+        flex-grow: 1;
+        padding: 0px 60px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: stretch; }
+        html body .main--compose--form {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          flex-grow: 1; }
+          html body .main--compose--form--header {
+            display: flex;
+            flex-direction: row;
+            gap: 20px; }
+            html body .main--compose--form--header--title {
+              flex-grow: 1; }
+          html body .main--compose--form--body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: stretch; }
+            html body .main--compose--form--body--body {
               display: flex;
               flex-direction: column;
               justify-content: stretch;
-              gap: 10px; }
-              html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--body .calendar--week {
-                display: flex;
-                flex-direction: row;
-                justify-content: stretch;
-                gap: 10px;
+              flex-grow: 1; }
+              html body .main--compose--form--body--body .compose-body {
                 height: 100%; }
-                html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--body .calendar--week .calendar--day {
-                  background-color: var(--color-element);
-                  padding: 40px 20px 20px;
-                  border-radius: 10px;
-                  flex-grow: 1;
-                  position: relative;
-                  box-sizing: border-box;
-                  border: solid 2px var(--color-element); }
-                  html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--body .calendar--week .calendar--day--noncurrent {
-                    background-color: rgba(0, 0, 0, 0);
-                    border-color: var(--color-disabled); }
-                    html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--body .calendar--week .calendar--day--noncurrent .calendar--day--date {
-                      background-color: var(--color-text-lighter); }
-                  html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--body .calendar--week .calendar--day--active {
-                    background-color: var(--color-dark); }
-                    html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--body .calendar--week .calendar--day--active .calendar--day--date {
-                      background-color: var(--color-primary-light); }
-                  html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--body .calendar--week .calendar--day--current .calendar--day--date {
-                    background-color: var(--color-primary-light); }
-                  html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--body .calendar--week .calendar--day--date {
-                    position: absolute;
-                    top: -2.5px;
-                    left: -2.5px;
-                    border-radius: 10px;
-                    color: var(--color-element);
-                    padding: 0px 10px;
-                    font-weight: bold;
-                    font-style: italic;
-                    font-size: 13px;
-                    user-select: none; }
-                  html body .main--calendar .carousel .carousel-inner .carousel-item .calendar--body .calendar--week .calendar--day--title {
-                    padding: 0px 10px;
-                    text-align: center;
-                    width: 100%;
-                    font-size: 12px;
-                    color: var(--color-white);
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    user-select: none; }
-    html body .main--compose {
-      flex-grow: 1;
-      padding: 0px 60px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: stretch; }
-      html body .main--compose--form {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        flex-grow: 1; }
-        html body .main--compose--form--header {
-          display: flex;
-          flex-direction: row;
-          gap: 20px; }
-          html body .main--compose--form--header--title {
-            flex-grow: 1; }
-        html body .main--compose--form--body {
-          flex-grow: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: stretch; }
-          html body .main--compose--form--body--body {
+          html body .main--compose--form--footer {
             display: flex;
-            flex-direction: column;
-            justify-content: stretch;
+            flex-direction: row;
+            gap: 20px; }
+            html body .main--compose--form--footer--submit button {
+              border: none; }
+            html body .main--compose--form--footer--draft button {
+              background-color: var(--color-disabled) !important;
+              border: none; }
+          html body .main--compose--form .form-group .compose-title, html body .main--compose--form .form-group .compose-date, html body .main--compose--form .form-group .compose-body {
+            background-color: var(--color-background);
+            color: var(--color-text);
+            border: solid 2px var(--color-dark); }
+          html body .main--compose--form .form-group .compose-title, html body .main--compose--form .form-group .compose-date, html body .main--compose--form .form-group .compose-submit, html body .main--compose--form .form-group .compose-draft {
+            font-size: 25px; }
+          html body .main--compose--form .form-group .compose-body {
+            font-size: 14px;
+            height: 100%;
             flex-grow: 1; }
-            html body .main--compose--form--body--body .compose-body {
-              height: 100%; }
-        html body .main--compose--form--footer {
-          display: flex;
-          flex-direction: row;
-          gap: 20px; }
-          html body .main--compose--form--footer--submit button {
-            border: none; }
-          html body .main--compose--form--footer--draft button {
-            background-color: var(--color-disabled) !important;
-            border: none; }
-        html body .main--compose--form .form-group .compose-title, html body .main--compose--form .form-group .compose-date, html body .main--compose--form .form-group .compose-body {
-          background-color: var(--color-background);
-          color: var(--color-text);
-          border: solid 2px var(--color-dark); }
-        html body .main--compose--form .form-group .compose-title, html body .main--compose--form .form-group .compose-date, html body .main--compose--form .form-group .compose-submit, html body .main--compose--form .form-group .compose-draft {
-          font-size: 25px; }
-        html body .main--compose--form .form-group .compose-body {
-          font-size: 14px;
-          height: 100%;
-          flex-grow: 1; }
-    html body .main--deleted {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 20px;
-      padding: 0px 60px; }
-      html body .main--deleted--post {
-        padding: 20px;
-        border: white solid 1px;
+      html body .main--post {
+        flex-grow: 1;
+        padding: 0px 60px;
+        position: relative;
         display: flex;
         flex-direction: column;
-        gap: 10px;
-        border-radius: 5px; }
-    html body .main--post {
-      flex-grow: 1;
-      padding: 0px 60px;
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: stretch;
-      gap: 20px; }
-      html body .main--post h1 {
-        padding: 6.75px 0px;
-        font-size: 25px; }
-      html body .main--post p {
-        padding: 6.75px 0px;
-        font-size: 14px; }
+        justify-content: stretch;
+        gap: 20px; }
+        html body .main--post h1 {
+          padding: 6.75px 0px;
+          font-size: 25px; }
+        html body .main--post p {
+          padding: 6.75px 0px;
+          font-size: 14px; }
     html body .footer {
       padding: 20px 60px;
       display: flex;

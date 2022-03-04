@@ -169,12 +169,15 @@ calendarJS.getAllCalendarPages = (minYear, maxYear) => { // * OKAY
 calendarJS.buildCalendarHTML = (currentPage, activeDate) => { // * OKAY
     $(`.header--navbar--title--context--date-picker p`).html(`${activeDate.monthString} ${activeDate.year}`);
 
+    let carouselItemPrefix = `main--calendar--carousel--inner--item--stretch`;
+
+    daysOfTheWeekDiv();
     function calendarDiv() {
         let result = ``;
         for (let i = 0; i < 5; i++) {
-            result += `<div class="carousel-item-${i+1} carousel-item">`;
-            result += `<div class="calendar">`;
-            result += daysOfTheWeekDiv(i);
+            result += `<div class="carousel-item-${i+1} carousel-item main--calendar--carousel--inner--item">`;
+            result += `<div class="${carouselItemPrefix}">`;
+            // result += daysOfTheWeekDiv(i);
             result += calendarBodyDiv(i);
             result += `</div>`;
             result += `</div>`;
@@ -197,23 +200,23 @@ calendarJS.buildCalendarHTML = (currentPage, activeDate) => { // * OKAY
 
     function daysOfTheWeekDiv() {
         const daysOfTheWeekArray = [`Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`];
-        let result = `<div class="calendar--head">`;
+        let result = `<div class="main--calendar--days--head">`;
         for (let i = 0; i < 7; i++) {
-            result += `<div class="calendar--day calendar--day-${daysOfTheWeekArray[i].toLowerCase()}">`;
+            result += `<div class="main--calendar--days--head--day calendar--day-${daysOfTheWeekArray[i].toLowerCase()}">`;
             result += `<p>`;
             result += `${daysOfTheWeekArray[i]}`;
             result += `</p>`;
             result += `</div>`;
         }
         result += `</div>`;
-        return result;
+        $(`.main--calendar--days`).html(result);
     }
 
     function calendarBodyDiv(index) {
-        let result = `<div class="calendar--body">`;
+        let result = `<div class="${carouselItemPrefix}--body">`;
         let entryIsCurrent = false;
         for (let i = 0, t = 0; i < 6; i++) {
-            let weekDivHTML = `<div class="calendar--week calendar--week-${i}">`;
+            let weekDivHTML = `<div class="${carouselItemPrefix}--body--week calendar--week-${i}">`;
             for (let k = 0; k <= 6 && t < 42; k++, t++) {
                 const entry = currentPage[index][t];
 
@@ -230,26 +233,33 @@ calendarJS.buildCalendarHTML = (currentPage, activeDate) => { // * OKAY
                 }
 
                 // const onclick = `onclick="calendarJS.changeActiveDate(${entry.year},${entry.month},${entry.date})"`;
-                const dayClass = (entry.date === activeDate.date && entry.month === activeDate.month) ? `active` : (entry.month === activeDate.month) ? `current` : `noncurrent`;
-                let classes = `class="`;
-                classes += `calendar--day `;
-                classes += `calendar--day--${dayClass} `;
-                classes += `calendar--week-${i}--day `;
-                classes += `calendar--week-${i}--day-${k} `;
-                classes += `date--${entry.year}-${entry.month}-${entry.date}`;
-                classes += `"`;
+                const dayStatus = (entry.date === activeDate.date && entry.month === activeDate.month) ? `active` : (entry.month === activeDate.month) ? `current` : `noncurrent`;
+                let calendarDayPrefix = `${carouselItemPrefix}--body--week--day`;
+                let classes = ``;
+                // classes += `calendar--week-${i}--day `;
+                // classes += `calendar--week-${i}--day-${k} `;
+                classes += `date--${entry.year}-${entry.month}-${entry.date} `;
+                // classes += `calendar--day `;
+                classes += `${calendarDayPrefix}__${dayStatus} `;
+                classes += `${calendarDayPrefix} `;
+                classes += ``;
 
-                let dayDivHTML = `<div ${classes} ${onclick}>`;
-                dayDivHTML += `<p class="calendar--day--date">`;
+                let dayDivHTML = `<div class="${classes}" ${onclick}>`;
+                dayDivHTML += `<div class="${classes} ${calendarDayPrefix}--upper">`;
+                dayDivHTML += `<p class="${calendarDayPrefix}--upper--date calendar--day--date">`;
                 dayDivHTML += `${entry.monthString.slice(0,3)} ${entry.date}`;
+                // dayDivHTML += `Mar 4`;
                 dayDivHTML += `</p>`;
+                dayDivHTML += `</div>`;
+                dayDivHTML += `<div class="${classes} ${calendarDayPrefix}--lower">`;
 
                 if (entry.hasOwnProperty(`post`)) {
-                    dayDivHTML += `<p class="calendar--day--title">`;
+                    dayDivHTML += `<p class="${calendarDayPrefix}--lower--title">`;
                     dayDivHTML += `${entry.post.title}`;
                     dayDivHTML += `</p>`;
                 }
 
+                dayDivHTML += `</div>`;
                 dayDivHTML += `</div>`;
                 weekDivHTML += dayDivHTML;
             }
@@ -303,6 +313,7 @@ calendarJS.findCalendarPage = (year, month) => { // * OKAY
 
 // * changeActiveDate(year, month, date, activeDate)
 calendarJS.changeActiveDate = (year, month, date) => {
+    // console.log(`WOW`); 
     year = parseInt(year);
     month = parseInt(month);
     date = parseInt(date);
@@ -328,25 +339,27 @@ calendarJS.changeActiveDate = (year, month, date) => {
     // console.log(`-----${(month<9)?'0'+(month+1):(month+1)}`); 
     $(`.header--navbar--title--context--date-picker--input`).val(`${year}-${(month<9)?'0'+(month+1):(month+1)}-${(date<10)?'0'+date:date}`);
 
+    let calendarDayPrefix = `main--calendar--carousel--inner--item--stretch--body--week--day`;
+
     if (year === prevDate.year && month === prevDate.month) {
-        if ($(`.date--${year}-${month}-${date}`).hasClass(`calendar--day--active`)) {
+        if ($(`.date--${year}-${month}-${date}`).hasClass(`${calendarDayPrefix}__active`)) {
             month++;
             let trail = `${year}`;
             trail += `-${(month < 10) ? `0${month}` : month}`;
             trail += `-${(date < 10) ? `0${date}` : date}`;
 
-            if ($(`.date--${year}-${month-1}-${date} .calendar--day--title`).length) {
+            if ($(`.date--${year}-${month-1}-${date} .main--calendar--carousel--inner--item--stretch--body--week--day--lower--title`).length) {
                 // alert(`WOWEE`);
                 window.location.href = `/post/${trail}`;
             } else {
                 window.location.href = `/compose/${trail}`;
             }
         } else {
-            $(`.calendar--day--active`).addClass(`calendar--day--current`);
-            $(`.calendar--day--active`).removeClass(`calendar--day--active`);
+            $(`.${calendarDayPrefix}__active`).addClass(`${calendarDayPrefix}__current`);
+            $(`.${calendarDayPrefix}__active`).removeClass(`${calendarDayPrefix}__active`);
 
-            $(`.date--${year}-${month}-${date}`).addClass(`calendar--day--active`);
-            $(`.date--${year}-${month}-${date}`).removeClass(`calendar--day--current`);
+            $(`.date--${year}-${month}-${date}`).addClass(`${calendarDayPrefix}__active`);
+            $(`.date--${year}-${month}-${date}`).removeClass(`${calendarDayPrefix}__current`);
         }
     } else {
         // * This is what happens if the active date isn't within the current month

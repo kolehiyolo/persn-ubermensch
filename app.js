@@ -32,15 +32,6 @@ app.get("/", function (req, res) { // * OKAY
   console.log(`GET request for Home Page`);
   console.log(`\n`);
 
-  // let test = kolehiyolo.stringifyDate(1998,0,21);
-  // console.log(test); 
-
-  // let test = kolehiyolo.stringifyTime(14,1,21,8);
-  // console.log(test); 
-
-  // let test = kolehiyolo.codifyTime(14,1,21,8);
-  // console.log(test); 
-
   function buildHeaderCalendarPicker() {
     let min = `1950-01-01`;
     let max = `2050-12-31`;
@@ -69,25 +60,6 @@ app.get("/", function (req, res) { // * OKAY
       });
     }
   });
-
-  // data.Post.findById(`621df9b0ec8e4dd7b2962b63`,(error,result)=>{
-  //   if (error) {
-  //     console.log(error); 
-  //   } else {
-  //     console.log(result); 
-  //     res.render(`modules/home`, {
-  //       pageHeader: headerCalendarPicker,
-  //       entryDBProxy: JSON.stringify(result),
-  //     });
-  //   }
-  // });
-
-  // res.render(`modules/home`, {
-  //   postsArray: data.posts,
-  //   pageHeader: headerCalendarPicker,
-  //   entryDBProxy: JSON.stringify(data.posts),
-  // });
-
 });
 
 // -* About Route
@@ -394,7 +366,7 @@ app.get("/deleted", function (req, res) { // * OKAY
 // 1000 - freeCodeCamp
 // 2000 - Frontend Mentor
 // 3000 - London App Brewery
-app.listen(3011, function () {
-  console.log("The server is running on port 3011.")
+app.listen(5003, function () {
+  console.log("The server is running on port 5003.")
   console.log(`\n`);
 });
