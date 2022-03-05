@@ -154,18 +154,16 @@ html {
             justify-content: stretch;
             gap: 10px; }
             html body .main--calendar--days--head--day {
-              border-radius: 10px;
+              border-radius: 6px;
               border: solid 2px var(--color-disabled);
-              flex-grow: 1;
-              flex-basis: 0;
+              flex: 1 1 0;
               text-align: center; }
         html body .main--calendar--carousel {
           display: flex;
           flex-direction: column;
           justify-content: stretch;
           align-self: stretch;
-          flex-grow: 1;
-          flex-basis: auto; }
+          flex: 1 1 0; }
           html body .main--calendar--carousel--button {
             position: absolute;
             top: 50%;
@@ -199,8 +197,7 @@ html {
               gap: 10px;
               height: 100%; }
               html body .main--calendar--carousel--inner--item--stretch--body {
-                flex-grow: 1;
-                flex-basis: 0;
+                flex: 1 1 0;
                 display: flex;
                 flex-direction: column;
                 justify-content: stretch;
@@ -213,11 +210,10 @@ html {
                   height: 100%; }
                   html body .main--calendar--carousel--inner--item--stretch--body--week--day {
                     background-color: var(--color-element);
-                    border-radius: 10px;
-                    flex-grow: 1;
-                    flex-basis: 0;
+                    border-radius: 6px;
+                    flex: 1 1 0;
                     position: relative;
-                    border: solid 1px var(--color-element);
+                    border: solid 2px var(--color-element);
                     display: flex;
                     flex-direction: column;
                     justify-content: stretch; }
@@ -227,7 +223,10 @@ html {
                       display: flex;
                       flex-direction: row;
                       width: 100%;
-                      border-radius: 10px 10px 0px 0px;
+                      border-top: none;
+                      border-left: none;
+                      border-right: none;
+                      border-radius: 6px 6px 0px 0px;
                       background-color: var(--color-background) !important; }
                       html body .main--calendar--carousel--inner--item--stretch--body--week--day--upper--date {
                         border-radius: 10px;
@@ -239,7 +238,8 @@ html {
                     html body .main--calendar--carousel--inner--item--stretch--body--week--day--lower {
                       position: relative;
                       flex-grow: 1;
-                      border-radius: 0px 0px 10px 10px; }
+                      border: none;
+                      border-radius: 0px 0px 6px 6px; }
                       html body .main--calendar--carousel--inner--item--stretch--body--week--day--lower--title {
                         padding: 0px 10px;
                         text-align: center;
@@ -264,8 +264,7 @@ html {
                         background-color: var(--color-primary);
                         color: var(--color-element-active); }
                     html body .main--calendar--carousel--inner--item--stretch--body--week--day__current {
-                      background-color: var(--color-element-active);
-                      border-color: var(--color-border-active); }
+                      background-color: var(--color-element-active); }
                       html body .main--calendar--carousel--inner--item--stretch--body--week--day__current .calendar--day--date {
                         background-color: var(--color-primary-light);
                         background-color: var(--color-white);
@@ -328,12 +327,19 @@ html {
         flex-direction: column;
         justify-content: stretch;
         gap: 20px; }
-        html body .main--post h1 {
-          padding: 6.75px 0px;
-          font-size: 25px; }
-        html body .main--post p {
-          padding: 6.75px 0px;
-          font-size: 14px; }
+        html body .main--post--content {
+          flex: 1 1 0; }
+          html body .main--post--content--title {
+            padding: 6.75px 0px;
+            font-size: 25px; }
+          html body .main--post--content--body {
+            padding: 6.75px 0px;
+            font-size: 14px; }
+        html body .main--post--buttons {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-end;
+          gap: 10px; }
     html body .footer {
       padding: 20px 60px;
       display: flex;

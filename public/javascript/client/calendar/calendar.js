@@ -43,6 +43,30 @@ calendarJS.getMonthString = (month) => { // * OKAY
         `December`;
 }
 
+// * addEventListeners()
+calendarJS.addEventListeners = () => {
+    $(`.header--navbar--title--context--date-picker--input`).change(() => {
+        const newDate = $(`.header--navbar--title--context--date-picker--input`).val().split(`-`);
+
+        const date = {
+            year: newDate[0],
+            month: newDate[1] - 1,
+            date: newDate[2]
+        };
+
+        calendarJS.changeActiveDate(date.year, date.month, date.date);
+    });
+}
+
+calendarJS.changeCalendarMode = (mode) => {
+    console.log(`changeCalendarMode(${mode})`); 
+
+    // * Update Styling for Active Button
+    $(`.header--navbar--menu--ul--li--mode__active`).removeClass(`header--navbar--menu--ul--li--mode__active`);
+    $(`.header--navbar--menu--ul--li--mode--${mode}`).addClass(`header--navbar--menu--ul--li--mode__active`);
+
+}
+
 // * State-change Functions
 // Functions that change the values on the global object, values that the app are dependent on when indicating states
 calendarJS.getCurrentDate = () => { // * OKAY
@@ -64,8 +88,13 @@ calendarJS.getCurrentDate = () => { // * OKAY
 }
 
 calendarJS.getActiveDate = () => { // ? NOT SURE LOL
-
 }
+
+
+
+
+
+
 
 // * Calendar-Data Functions
 // Functions that build the massive amounts of data that is used as content for the app
@@ -169,6 +198,8 @@ calendarJS.getAllCalendarPages = (minYear, maxYear) => { // * OKAY
 calendarJS.buildCalendarHTML = (currentPage, activeDate) => { // * OKAY
     $(`.header--navbar--title--context--date-picker p`).html(`${activeDate.monthString} ${activeDate.year}`);
 
+    // console.log(currentPage);  
+
     let carouselItemPrefix = `main--calendar--carousel--inner--item--stretch`;
 
     daysOfTheWeekDiv();
@@ -229,7 +260,6 @@ calendarJS.buildCalendarHTML = (currentPage, activeDate) => { // * OKAY
                     onclick = `onclick="calendarJS.emulateCarouselClick('previous',${entry.year},${entry.month},${entry.date})"`;
                 } else {
                     onclick = `onclick="calendarJS.emulateCarouselClick('next',${entry.year},${entry.month},${entry.date})"`;
-                    // onclick = `onclick="calendarJS.emulateCarouselClick('next','date')"`;
                 }
 
                 // const onclick = `onclick="calendarJS.changeActiveDate(${entry.year},${entry.month},${entry.date})"`;
@@ -425,7 +455,6 @@ calendarJS.moveCalendarPage = (direction, state) => {
 let movingState = false;
 
 calendarJS.emulateCarouselClick = (direction, year, month, date) => {
-    // console.log(state); 
     if (direction === `previous`) {
         $(".carousel-control-prev-icon").click();
     } else {
@@ -435,42 +464,4 @@ calendarJS.emulateCarouselClick = (direction, year, month, date) => {
     setTimeout(() => {
         calendarJS.changeActiveDate(year, month, date);
     }, 600);
-
-}
-
-// * addEventListeners()
-calendarJS.addEventListeners = () => {
-    $(`.header--navbar--title--context--date-picker--input`).change(() => {
-        const newDate = $(`.header--navbar--title--context--date-picker--input`).val().split(`-`);
-
-        const date = {
-            year: newDate[0],
-            month: newDate[1] - 1,
-            date: newDate[2]
-        };
-
-        calendarJS.changeActiveDate(date.year, date.month, date.date);
-    });
-}
-
-calendarJS.deleteReroute = (date) => {
-    console.log(date); 
-    // window.location.href = `/delete/${date}`;
-};
-calendarJS.editReroute = (date) => {
-    console.log(date); 
-    // window.location.href = `/edit/${date}`;
-};
-
-calendarJS.testFunction = (test) => {
-    console.log(`test = ${test}`); 
-}
-
-calendarJS.changeCalendarMode = (mode) => {
-    console.log(`changeCalendarMode(${mode})`); 
-
-    // * Update Styling for Active Button
-    $(`.header--navbar--menu--ul--li--mode__active`).removeClass(`header--navbar--menu--ul--li--mode__active`);
-    $(`.header--navbar--menu--ul--li--mode--${mode}`).addClass(`header--navbar--menu--ul--li--mode__active`);
-
 }

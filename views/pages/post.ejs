@@ -13,14 +13,20 @@
 
     <!-- * Main -->
     <main class="main--post">
-        <h1><%-postTitle%></h1>
-        <p><%-postBody%></p>
+        <div class="main--post--content">
+            <div class="main--post--content--title">
+                <h2><%-postTitle%></h2>
+            </div>
+            <div class="main--post--content--body">
+                <p><%-postBody%></p>
+            </div>
+        </div>
         <div class="main--post--buttons">
             <form action="/edit/<%=postDate%>" method="GET" class="main--post--buttons--edit form-group">
-                <button class="btn btn-primary" name="submit" type="submit" onclick="calendarJS.editReroute('<%=postDate%>')">Edit</button>
+                <button class="btn btn-primary" name="submit" type="submit">Edit</button>
             </form>
             <form action="/delete/<%=postDate%>" method="POST" class="main--post--buttons--delete form-group">
-                <button class="btn btn-primary" name="draft" type="submit" onclick="calendarJS.deleteReroute('<%=postDate%>')">Delete</button>
+                <button class="btn btn-primary" name="draft" type="submit">Delete</button>
             </form>
         </div>
     </main>
@@ -29,7 +35,7 @@
     <!-- * Footer -->
     <%- include(`../partials/footer`) -%>
 
-    <script src="../javascript/client/calendar.js"></script>
+    <!-- <script src="../javascript/client/calendar.js"></script> -->
 </body>
 
 </html>

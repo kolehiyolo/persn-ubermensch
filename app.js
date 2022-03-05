@@ -54,33 +54,13 @@ app.get("/", function (req, res) { // * OKAY
       console.log(error);
     } else {
       console.log(`ALL POSTS FETCH SUCCESSFUL`);
-      res.render(`modules/home`, {
+      res.render(`pages/home`, {
         pageHeader: buildHeaderCalendarPicker(),
         entryDBProxy: JSON.stringify(result),
       });
     }
   });
 });
-
-// -* About Route
-// app.get("/about", function (req, res) {
-//   console.log(`GET request for About Page`);
-//   console.log(`\n`);
-
-//   res.render(`modules/about`, {
-//     sample: data.aboutContent
-//   });
-// });
-
-// -* Contact Route
-// app.get("/contact", function (req, res) {
-//   console.log(`GET request for Contact Page`);
-//   console.log(`\n`);
-
-//   res.render(`modules/contact`, {
-//     sample: data.contactContent
-//   });
-// });
 
 // -* GET Compose Route
 app.get("/compose/:date", function (req, res) {
@@ -192,7 +172,7 @@ app.get("/post/:postDate", function (req, res) {
       let postTitle = post.title;
       let postBody = post.body;
 
-      res.render(`modules/post`, {
+      res.render(`pages/post`, {
         pageHeader: req.params.postDate,
         postTitle: postTitle,
         postBody: postBody,

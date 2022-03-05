@@ -1,30 +1,25 @@
-<script src="javascript/client/test.js"></script>
-<script src="javascript/client/calendar.js"></script>
+<script src="javascript/client/calendar/calendar.js"></script>
 <script>
-    calendarJS.currentDate = calendarJS.getCurrentDate();
-    calendarJS.allCalendarPages = calendarJS.getAllCalendarPages(calendarJS.minYear, calendarJS.maxYear);
+  calendarJS.currentDate = calendarJS.getCurrentDate();
+  calendarJS.allCalendarPages = calendarJS.getAllCalendarPages(calendarJS.minYear, calendarJS.maxYear);
 
-    calendarJS.activeDate = JSON.parse(JSON.stringify(calendarJS.currentDate));
+  calendarJS.activeDate = JSON.parse(JSON.stringify(calendarJS.currentDate));
 
-    let activeCalendarPage = calendarJS.findCalendarPage(calendarJS.currentDate.year, calendarJS.currentDate.month);
+  let activeCalendarPage = calendarJS.findCalendarPage(calendarJS.currentDate.year, calendarJS.currentDate.month);
 
-    // calendarJS.buildCalendarHTML(activeCalendarPage, calendarJS.activeDate);
+  calendarJS.addEventListeners();
 
-    calendarJS.addEventListeners();
+  let entryDB = <%-entryDBProxy%> ;
+  // console.log(entryDB);
 
-    let entryDB = <%-entryDBProxy%> ;
-
-    // console.log(<%-entryDBProxy%>); 
-    console.log(entryDB); 
 </script>
 <script src="javascript/client/pseudodata.js"></script>
 <script>
-    calendarJS.buildCalendarHTML(activeCalendarPage, calendarJS.activeDate);
-    // buildCalendarDiv(activeCalendarPage);
+  calendarJS.buildCalendarHTML(activeCalendarPage, calendarJS.activeDate);
 </script>
 <script type="text/javascript">
-    var tooltips = document.querySelectorAll('.btn-tt')
-    tooltips.forEach(t => {
-      new bootstrap.Tooltip(t)
-    })
-  </script>
+  var tooltips = document.querySelectorAll('.btn-tt')
+  tooltips.forEach(t => {
+    new bootstrap.Tooltip(t)
+  })
+</script>
