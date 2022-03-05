@@ -1,0 +1,793 @@
+[{
+  "_id": {
+    "$oid": "621e1fd6b1ceb22565f90b0b"
+  },
+  "title": "Finally have a working Blog Site!",
+  "body": "I am unbelievably excited about this.\r\n\r\nSo I've been working on this project for a while now and it's finally here! Or at least it's in good working condition in that I can finally write posts and publish them and they actually are stored in a database. The DB is local for now but it still feels good to make this work. I've done so much for this project including relearning so much of Node.js, EJS, Express, MongoDB, Mongoose, SASS, and Boostrap. I also researched a lot about handling JavaScript dates, which can get quite complicated especially when it comes to formatting (and also the weird indexing of months). Overall, this was quite a productive day, primarily thanks to GitHub projects! \r\n\r\nGitHub projects really changed my workflow quite a lot. I do a little bit of coding here and there whenever there's downtime at work, but usually, when a customer calls in, my coding focus gets broken and it's hard to get back into the groove once I'm done with the call. So instead, I opted to use these times to manage my GitHub project/s. For now, I just have one, which is for this particular project. In it, I built 2 views, one for my ideas, and one working as a Kanban board. I try to write the ideas/issues with as many details as possible to make sure that before I actually do the code, I don't end up second-guessing myself on what I'm doing and what I'm doing next and even why I'm doing what I'm doing in the first place. \r\n\r\nRight now, the task I'm doing is still the \"Setup DB w/ MongoDB + Mongoose\" task. I'm able to fetch the posts from the DB and also fetch a specific post based on date, and I'm also able to create new posts now. However, I still haven't built the functionality that allows me to edit and delete posts. That's what's coming tomorrow. I'm also going to do a major overhaul of the project structure, such as refactoring to reflect the dynamic EJS pages, Express routings, HTML and CSS hierarchy, and major JavaScript reworking (I intend to prioritize functional programming).\r\n\r\nOverall, I am so pumped for all the progress that I made today that I'm not even sure how I'm supposed to go to sleep with all this adrenaline. I have to, though, since I'm early for work tomorrow (uggh). I sincerely hope that this post will be the first of a never-ending stream of end-of-day thoughts from yours truly and that someday all these sacrifices will be worth it. LESGOOOO",
+  "link": "Sample Link",
+  "theme": "Sample Theme",
+  "status": "Done",
+  "stamp": {
+    "date": {
+      "code": "2022-03-01",
+      "string": "March 1st, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 1,
+      "_id": {
+        "$oid": "621e1fd6b1ceb22565f90aff"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "621e1fd6b1ceb22565f90b01"
+      }
+    },
+    "_id": {
+      "$oid": "621e1fd6b1ceb22565f90b02"
+    }
+  },
+  "date": {
+    "date": {
+      "code": "2022-03-01",
+      "string": "March 1st, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 1,
+      "_id": {
+        "$oid": "621e1fd6b1ceb22565f90b00"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "621e1fd6b1ceb22565f90b01"
+      }
+    },
+    "_id": {
+      "$oid": "621e1fd6b1ceb22565f90b05"
+    }
+  },
+  "edit": {
+    "date": {
+      "code": "2022-03-01",
+      "string": "March 1st, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 1,
+      "_id": {
+        "$oid": "621e1fd6b1ceb22565f90aff"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "621e1fd6b1ceb22565f90b01"
+      }
+    },
+    "_id": {
+      "$oid": "621e1fd6b1ceb22565f90b08"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621f6778857bbd600660fcff"
+  },
+  "title": "MongoDB Compass FTW",
+  "body": "Today, I took a big step w/ my project, which comes in the form of setting up an online DB using MongoDB Atlas. Early before work, I decided to export the local DB I had on my PC so I can add it to my repo and import it to my Macbook and I can continue my tasks. I managed to export the posts collections into a JSON but I wasn't quite sure about the importing process. One of the suggestions on the docs was MongoDB Compass, so I decided to give it a go. And by golly, what an amazing tool. \r\n\r\nDon't get me wrong, I solidly enjoy working w/ the terminal when using Git, GitHub, Node.js and in this case, MongoDB shell, but having a GUI for these tools is just a massive gamechanger. Taking a look at my DBs has never been easier. Managing documents has never been easier. Importing and exporting data has never been easier. I am in deep love w/ MongoDB Compass, same as how I've fallen in love w/ GitHub Desktop and GitHub Projects. They've made me realize that you don't need to do everything by code and why GUI's are epic.\r\n\r\nBesides this, however, nothing trully groundbreaking has been done on my code. I mostly just worked on making MongoDB Atlas work, did some tests here and there to make sure Atlas, Compass, and my project are all showing the expected same results. When I change a title of a post on Atlas, it shows on Compass, and it also shows on the Calendar page of my project. Brilliant.\r\n\r\nMy after-work time was consumed by my brother, Theolo, who had soon-due coding homework. They're required to make a Java class, in which 20 methods/functions are built, each of which should do some simple math calculations. For example, we built a function that returns the circumference of a circle from the user's radius input. I ended up revisiting Java and understanding quite a bit how packages work, how classes and functions operate, and just generally get more into the language and syntax. We did some trial and error to make things work, and after giving him a demo of how I would do things, I decided to let him give it a go (also because it's late and I have to go to bed lol). This was a fun lil project that I want to expand on in the future. Like a simple app that has all these calculators for various formulas. Maybe. Someday.\r\n\r\nFor now, I am off to bed, and I really look forward to making tomorrow massively worth it. Ciao",
+  "link": "Sample Link",
+  "theme": "Sample Theme",
+  "status": "Done",
+  "stamp": {
+    "date": {
+      "code": "2022-03-02",
+      "string": "March 2nd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 2,
+      "_id": {
+        "$oid": "621f6778857bbd600660fcf3"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "621f6778857bbd600660fcf5"
+      }
+    },
+    "_id": {
+      "$oid": "621f6778857bbd600660fcf6"
+    }
+  },
+  "date": {
+    "date": {
+      "code": "2022-03-02",
+      "string": "March 2nd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 2,
+      "_id": {
+        "$oid": "621f6778857bbd600660fcf4"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "621f6778857bbd600660fcf5"
+      }
+    },
+    "_id": {
+      "$oid": "621f6778857bbd600660fcf9"
+    }
+  },
+  "edit": {
+    "date": {
+      "code": "2022-03-02",
+      "string": "March 2nd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 2,
+      "_id": {
+        "$oid": "621f6778857bbd600660fcf3"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "621f6778857bbd600660fcf5"
+      }
+    },
+    "_id": {
+      "$oid": "621f6778857bbd600660fcfc"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621f69d2f1d6e927f203f1d3"
+  },
+  "title": "Nani desu kaaaaaasss",
+  "body": "Testing testing okaaaaaywqwasd",
+  "link": "Sample Link",
+  "theme": "Sample Theme",
+  "status": "Done",
+  "stamp": {
+    "date": {
+      "code": "2022-03-02",
+      "string": "March 2nd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 2,
+      "_id": {
+        "$oid": "621f69d2f1d6e927f203f1c7"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "621f69d2f1d6e927f203f1c9"
+      }
+    },
+    "_id": {
+      "$oid": "621f69d2f1d6e927f203f1ca"
+    }
+  },
+  "date": {
+    "date": {
+      "code": "2022-03-15",
+      "string": "March 15th, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 15,
+      "_id": {
+        "$oid": "621f69d2f1d6e927f203f1c8"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "621f69d2f1d6e927f203f1c9"
+      }
+    },
+    "_id": {
+      "$oid": "621f69d2f1d6e927f203f1cd"
+    }
+  },
+  "edit": {
+    "date": {
+      "code": "2022-03-03",
+      "string": "March 3rd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 3,
+      "_id": {
+        "$oid": "62200d684ba373d2f3c63c61"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "62200d684ba373d2f3c63c62"
+      }
+    },
+    "_id": {
+      "$oid": "62200d684ba373d2f3c63c63"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621ed7c03e6ecbd643159e9b"
+  },
+  "title": "Testing grouuund",
+  "body": "This is a test to see the behavior when publishing the posts",
+  "link": "Sample Link",
+  "theme": "Sample Theme",
+  "status": "Done",
+  "stamp": {
+    "date": {
+      "code": "2022-03-02",
+      "string": "March 2nd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 2,
+      "_id": {
+        "$oid": "621ed7c03e6ecbd643159e8f"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "621ed7c03e6ecbd643159e91"
+      }
+    },
+    "_id": {
+      "$oid": "621ed7c03e6ecbd643159e92"
+    }
+  },
+  "date": {
+    "date": {
+      "code": "2022-03-25",
+      "string": "March 25th, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 25,
+      "_id": {
+        "$oid": "621ed7c03e6ecbd643159e90"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "621ed7c03e6ecbd643159e91"
+      }
+    },
+    "_id": {
+      "$oid": "621ed7c03e6ecbd643159e95"
+    }
+  },
+  "edit": {
+    "date": {
+      "code": "2022-03-02",
+      "string": "March 2nd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 2,
+      "_id": {
+        "$oid": "621ed7c03e6ecbd643159e8f"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "621ed7c03e6ecbd643159e91"
+      }
+    },
+    "_id": {
+      "$oid": "621ed7c03e6ecbd643159e98"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "621f69ebf1d6e927f203f25a"
+  },
+  "title": "Sure thingie",
+  "body": "yupyup",
+  "link": "Sample Link",
+  "theme": "Sample Theme",
+  "status": "Done",
+  "stamp": {
+    "date": {
+      "code": "2022-03-02",
+      "string": "March 2nd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 2,
+      "_id": {
+        "$oid": "621f69ebf1d6e927f203f24e"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "621f69ebf1d6e927f203f250"
+      }
+    },
+    "_id": {
+      "$oid": "621f69ebf1d6e927f203f251"
+    }
+  },
+  "date": {
+    "date": {
+      "code": "2022-04-07",
+      "string": "April 7th, 2022",
+      "year": 2022,
+      "month": 3,
+      "date": 7,
+      "_id": {
+        "$oid": "621f69ebf1d6e927f203f24f"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "621f69ebf1d6e927f203f250"
+      }
+    },
+    "_id": {
+      "$oid": "621f69ebf1d6e927f203f254"
+    }
+  },
+  "edit": {
+    "date": {
+      "code": "2022-03-02",
+      "string": "March 2nd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 2,
+      "_id": {
+        "$oid": "621f69ebf1d6e927f203f24e"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "621f69ebf1d6e927f203f250"
+      }
+    },
+    "_id": {
+      "$oid": "621f69ebf1d6e927f203f257"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6220970491aa4fce594f9e6e"
+  },
+  "title": "Damnit buiiii",
+  "body": "Okay let's test this",
+  "link": "Sample Link",
+  "theme": "Sample Theme",
+  "status": "Done",
+  "stamp": {
+    "date": {
+      "code": "2022-03-03",
+      "string": "March 3rd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 3,
+      "_id": {
+        "$oid": "6220970491aa4fce594f9e62"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "6220970491aa4fce594f9e64"
+      }
+    },
+    "_id": {
+      "$oid": "6220970491aa4fce594f9e65"
+    }
+  },
+  "date": {
+    "date": {
+      "code": "2022-05-31",
+      "string": "May 31st, 2022",
+      "year": 2022,
+      "month": 4,
+      "date": 31,
+      "_id": {
+        "$oid": "6220970491aa4fce594f9e63"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "6220970491aa4fce594f9e64"
+      }
+    },
+    "_id": {
+      "$oid": "6220970491aa4fce594f9e68"
+    }
+  },
+  "edit": {
+    "date": {
+      "code": "2022-03-03",
+      "string": "March 3rd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 3,
+      "_id": {
+        "$oid": "6220970491aa4fce594f9e62"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "6220970491aa4fce594f9e64"
+      }
+    },
+    "_id": {
+      "$oid": "6220970491aa4fce594f9e6b"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6220975391aa4fce594f9ef3"
+  },
+  "title": "Test #1",
+  "body": "This is a test",
+  "link": "Sample Link",
+  "theme": "Sample Theme",
+  "status": "Done",
+  "stamp": {
+    "date": {
+      "code": "2022-03-03",
+      "string": "March 3rd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 3,
+      "_id": {
+        "$oid": "6220975391aa4fce594f9ee7"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "6220975391aa4fce594f9ee9"
+      }
+    },
+    "_id": {
+      "$oid": "6220975391aa4fce594f9eea"
+    }
+  },
+  "date": {
+    "date": {
+      "code": "2022-02-28",
+      "string": "February 28th, 2022",
+      "year": 2022,
+      "month": 1,
+      "date": 28,
+      "_id": {
+        "$oid": "6220975391aa4fce594f9ee8"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "6220975391aa4fce594f9ee9"
+      }
+    },
+    "_id": {
+      "$oid": "6220975391aa4fce594f9eed"
+    }
+  },
+  "edit": {
+    "date": {
+      "code": "2022-03-03",
+      "string": "March 3rd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 3,
+      "_id": {
+        "$oid": "6220975391aa4fce594f9ee7"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "6220975391aa4fce594f9ee9"
+      }
+    },
+    "_id": {
+      "$oid": "6220975391aa4fce594f9ef0"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6220c76e81d1626086c34850"
+  },
+  "title": "Editing and Deleting Now Working",
+  "body": "Today is exhausting.\r\n\r\nI woke up on time. Did some walking during lunch. Did my HIIT exercise after work. Did my fair dose of coding. Possibly too much coding, It's almost 10 now and I should've been asleep by 8.\r\n\r\nIt's worth it tho. The site is now working, and all CRUD functions are up and running. I can now create posts with dates specified, and they will show on the calendar as expected. I can edit and delete existing posts, and I can even restore deleted posts. The inner plumbing is still messy, but the water's warm, and the pressure is fine. \r\n\r\nI also started reworking the styling, beginning w/ the header and footer. I'm not entirely sure what I'll do tomorrow, but it will most likely still styling related. Actually, I think I'll work on the Theming next, so I can then work on color schemes. I'm sick of the blue motif of the project at this point.\r\n\r\nI fixed my first documented bug ever on GitHub, and yeah I'm excited to document some more, although the best time to be logging bugs is once the project is actually available for regular use, even if it's just for me.\r\n\r\nI'm really really REALLY happy so far with the project. I look forward to tomorrow",
+  "link": "Sample Link",
+  "theme": "Sample Theme",
+  "status": "Done",
+  "stamp": {
+    "date": {
+      "code": "2022-03-03",
+      "string": "March 3rd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 3,
+      "_id": {
+        "$oid": "6220c76e81d1626086c34844"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "6220c76e81d1626086c34846"
+      }
+    },
+    "_id": {
+      "$oid": "6220c76e81d1626086c34847"
+    }
+  },
+  "date": {
+    "date": {
+      "code": "2022-03-03",
+      "string": "March 3rd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 3,
+      "_id": {
+        "$oid": "6220c76e81d1626086c34845"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "6220c76e81d1626086c34846"
+      }
+    },
+    "_id": {
+      "$oid": "6220c76e81d1626086c3484a"
+    }
+  },
+  "edit": {
+    "date": {
+      "code": "2022-03-03",
+      "string": "March 3rd, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 3,
+      "_id": {
+        "$oid": "6220c76e81d1626086c34844"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "6220c76e81d1626086c34846"
+      }
+    },
+    "_id": {
+      "$oid": "6220c76e81d1626086c3484d"
+    }
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "62230e238d9c87cd26d8e823"
+  },
+  "title": "Massive Design Upgrade",
+  "body": "It's Friday! \r\n\r\nSo much has been done with the project, design-wise. I did a massive overhaul of the design which involved so much refactoring and restructuring of the system. It was all about the Calendar page functionality, however, and nothing much else beyond that. Still, since so much about this feature relies on so many moving parts, from the HTML structure to the styling and to the JavaScript builders and functions, so much work had to be done. \r\n\r\nThe look and feel of the home page are now more reminiscent of GitHub's UI, which I just love for its minimalism and dark mode aesthetic. I've also reworked each date on the calendar page to function more like cards. I'm excited to put so much more customizability to each date, by adding theming, reminders, todos, and all sorts of other potentially daily features. \r\n\r\nOverall, this was a great day for honing my design skills better. So enthused about continue this tomorrow",
+  "link": "Sample Link",
+  "theme": "Sample Theme",
+  "status": "Done",
+  "stamp": {
+    "date": {
+      "code": "2022-03-05",
+      "string": "March 5th, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 5,
+      "_id": {
+        "$oid": "62230e238d9c87cd26d8e817"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "62230e238d9c87cd26d8e819"
+      }
+    },
+    "_id": {
+      "$oid": "62230e238d9c87cd26d8e81a"
+    }
+  },
+  "date": {
+    "date": {
+      "code": "2022-03-04",
+      "string": "March 4th, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 4,
+      "_id": {
+        "$oid": "62230e238d9c87cd26d8e818"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "62230e238d9c87cd26d8e819"
+      }
+    },
+    "_id": {
+      "$oid": "62230e238d9c87cd26d8e81d"
+    }
+  },
+  "edit": {
+    "date": {
+      "code": "2022-03-05",
+      "string": "March 5th, 2022",
+      "year": 2022,
+      "month": 2,
+      "date": 5,
+      "_id": {
+        "$oid": "62230e238d9c87cd26d8e817"
+      }
+    },
+    "time": {
+      "code": "01:01:01 AM GMT+8",
+      "string": "01:01:01",
+      "hour": 1,
+      "minutes": 1,
+      "seconds": 1,
+      "timezone": 8,
+      "_id": {
+        "$oid": "62230e238d9c87cd26d8e819"
+      }
+    },
+    "_id": {
+      "$oid": "62230e238d9c87cd26d8e820"
+    }
+  },
+  "__v": 0
+}]
