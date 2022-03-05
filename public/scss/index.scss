@@ -32,6 +32,7 @@
 html {
     min-height: 100vh;
     scroll-behavior: smooth;
+    // overflow: hidden;
 
     // * Overriding Default Box Model
     * {
@@ -48,10 +49,12 @@ html {
 
     // * Body
     body {
-        min-height: 100vh;
+        height: 100vh;
+        max-height: 100vh;
         background-color: var(--color-background);
         display: flex;
         flex-direction: column;
+        // overflow-y: hidden;
 
         // * Header
         @import "partials/header.scss";
@@ -61,15 +64,25 @@ html {
             display: flex;
             flex-direction: column;
             justify-content: stretch;
+            overflow-y: hidden;
 
-            // * Calendar Month View
-            @import "main/calendar-month.scss";
+            // * List Components
+            @import "main/calendar/mode-list.scss";
+
+            // * Grid Components
+            @import "main/calendar/mode-grid.scss";
+
+            // * Compose Components
+            @import "main/calendar/calendar.scss";
 
             // * Compose Components
             @import "main/compose.scss";
 
             // * Post Components
             @import "main/post.scss";
+
+            // * Deleted Components
+            @import "main/deleted.scss";
 
         }
 

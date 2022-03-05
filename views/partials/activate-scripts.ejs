@@ -1,22 +1,30 @@
-<script src="javascript/client/calendar/calendar.js"></script>
-<script>
-  calendarJS.currentDate = calendarJS.getCurrentDate();
-  calendarJS.allCalendarPages = calendarJS.getAllCalendarPages(calendarJS.minYear, calendarJS.maxYear);
-
-  calendarJS.activeDate = JSON.parse(JSON.stringify(calendarJS.currentDate));
-
-  let activeCalendarPage = calendarJS.findCalendarPage(calendarJS.currentDate.year, calendarJS.currentDate.month);
-
-  calendarJS.addEventListeners();
-
-  let entryDB = <%-entryDBProxy%> ;
-  // console.log(entryDB);
-
-</script>
+<!-- * Run Script Files -->
+<script src="javascript/client/mode/calendar.js"></script>
+<script src="javascript/client/mode/mode-month.js"></script>
+<script src="javascript/client/mode/mode-week.js"></script>
+<script src="javascript/client/mode/mode-date.js"></script>
+<script src="javascript/client/mode/mode-list.js"></script>
+<script src="javascript/client/mode/mode-grid.js"></script>
+<script src="javascript/client/functions.js"></script>
 <script src="javascript/client/pseudodata.js"></script>
+
+<!-- * Initialize Default Values-->
 <script>
-  calendarJS.buildCalendarHTML(activeCalendarPage, calendarJS.activeDate);
+  headerJS.addEventListeners();
+  calendarJS.currentDate = calendarJS.getCurrentDate();
+  calendarJS.activeDate = JSON.parse(JSON.stringify(calendarJS.currentDate));
+  calendarMonthJS.pages = calendarJS.getMonthPages(calendarJS.minYear, calendarJS.maxYear);
+  let entryDB = <%-entryDBProxy%>;
+  addEntriesToCalendarPages(entryDB);
+  calendarWeekJS.pages = calendarJS.getWeekPages(calendarMonthJS.pages);
+  // let mode = 
+  // console.log(`WHAT`); 
+  // console.log(<%mode%>); 
+  // console.log('<%-mode%>'); 
+  headerJS.changeViewMode('<%-mode%>');
 </script>
+
+<!-- * Bootstrap Tooltip Initialize -->
 <script type="text/javascript">
   var tooltips = document.querySelectorAll('.btn-tt')
   tooltips.forEach(t => {

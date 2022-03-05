@@ -11,39 +11,61 @@
     </button>
     <div class="header--navbar--menu collapse navbar-collapse flex-row-reverse" id="navbarNav">
       <ul class="header--navbar--menu--ul navbar-nav">
+        <!-- Grid View -->
+        <li class="header--navbar--menu--ul--li nav-item">
+          <button type="button" class="header--navbar--menu--ul--li--button
+          header--navbar--menu--ul--li--mode
+          header--navbar--menu--ul--li--mode--grid
+          nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Grid" onclick="headerJS.changeViewMode('grid')">
+            <i class="fa-solid fa-grip"></i>
+          </button>
+        </li>
+        <li class="header--navbar--menu--ul--li nav-item">
+          <button type="button" class="header--navbar--menu--ul--li--button
+          header--navbar--menu--ul--li--mode
+          header--navbar--menu--ul--li--mode--list
+          nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="List" onclick="headerJS.changeViewMode('list')">
+            <i class="fa-solid fa-list"></i>
+          </button>
+        </li>
         <!-- Month View -->
         <li class="header--navbar--menu--ul--li nav-item">
           <button type="button" class="header--navbar--menu--ul--li--button
-          header--navbar--menu--ul--li--mode--month header--navbar--menu--ul--li--mode__active
-          nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Month View" onclick="calendarJS.changeCalendarMode('month')">
+          header--navbar--menu--ul--li--mode
+          header--navbar--menu--ul--li--mode--month 
+          nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Month" onclick="headerJS.changeViewMode('month')">
             <i class="fa-solid fa-calendar-days"></i>
           </button>
         </li>
         <!-- Week View -->
         <li class="header--navbar--menu--ul--li nav-item">
           <button type="button" class="header--navbar--menu--ul--li--button
+          header--navbar--menu--ul--li--mode
           header--navbar--menu--ul--li--mode--week 
-          nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Week View" onclick="calendarJS.changeCalendarMode('week')">
+          nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Week" onclick="headerJS.changeViewMode('week')">
             <i class="fa-solid fa-calendar-week"></i>
           </button>
         </li>
         <!-- Day View -->
         <li class="header--navbar--menu--ul--li nav-item">
           <button type="button" class="header--navbar--menu--ul--li--button
-          header--navbar--menu--ul--li--mode--day 
-          nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Day View" onclick="calendarJS.changeCalendarMode('day')">
+          header--navbar--menu--ul--li--mode
+          header--navbar--menu--ul--li--mode--date 
+          nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Day" onclick="headerJS.changeViewMode('date')">
             <i class="fa-solid fa-calendar-day"></i>
           </button>
         </li>
+        <span class="header--navbar--menu--ul--divider"> | </span>
         <!-- Deleted Posts -->
         <li class="header--navbar--menu--ul--li nav-item">
-          <button type="button" class="header--navbar--menu--ul--li--button header--navbar--menu--ul--li--button--deleted nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Deleted Posts" onclick="calendarJS.routeToDeleted()">
+          <button type="button" class="header--navbar--menu--ul--li--button header--navbar--menu--ul--li--button--deleted nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Deleted Posts" onclick="window.location.href = `/deleted`;">
+            <!-- <button type="button" class="header--navbar--menu--ul--li--button header--navbar--menu--ul--li--button--deleted nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Deleted Posts" onclick="calendarJS.routeToDeleted()"> -->
             <i class="fa-solid fa-calendar-xmark"></i>
           </button>
         </li>
         <!-- Write a Post -->
         <li class="header--navbar--menu--ul--li nav-item">
-          <button type="button" class="header--navbar--menu--ul--li--button header--navbar--menu--ul--li--button--add nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Write a Post" onclick="calendarJS.writeForToday()">
+          <button type="button" class="header--navbar--menu--ul--li--button header--navbar--menu--ul--li--button--add nav-link btn-tt" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Write a Post" onclick="headerJS.writeForToday()">
             <i class="fa-solid fa-calendar-plus"></i>
           </button>
         </li>
@@ -51,3 +73,4 @@
     </div>
   </nav>
 </header>
+<script src="javascript/client/header.js"></script>

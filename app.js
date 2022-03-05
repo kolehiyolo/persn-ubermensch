@@ -27,7 +27,7 @@ const data = require(`${__dirname}/public/javascript/server/data.js`);
 const kolehiyolo = require(`${__dirname}/public/javascript/server/functions.js`);
 
 // * EXPRESS ROUTES
-// -* Home Route
+
 app.get("/", function (req, res) { // * OKAY
   console.log(`GET request for Home Page`);
   console.log(`\n`);
@@ -57,6 +57,7 @@ app.get("/", function (req, res) { // * OKAY
       res.render(`pages/home`, {
         pageHeader: buildHeaderCalendarPicker(),
         entryDBProxy: JSON.stringify(result),
+        mode: "month"
       });
     }
   });
@@ -67,7 +68,7 @@ app.get("/compose/:date", function (req, res) {
   console.log("GET request for Compose Page");
   console.log(`\n`);
 
-  res.render("modules/compose", {
+  res.render("pages/compose", {
     sample: "",
     pageHeader: `New Post`,
     date: req.params.date,
@@ -176,7 +177,7 @@ app.get("/post/:postDate", function (req, res) {
         pageHeader: req.params.postDate,
         postTitle: postTitle,
         postBody: postBody,
-        postDate: post.date.date.code
+        postDate: post.date.date.code,
       });
     }
   });
@@ -297,13 +298,39 @@ app.post("/delete/:postDate", function (req, res) {
   })
 });
 
+// -* POST Permadelete
+app.post("/permadelete/:postDate", function (req, res) {
+  console.log(`POST request for Perma-Delete ${req.params.postDate}`);
+  console.log(`\n`);
+
+  data.model.Deleted.findOne({
+    '_d': req.params.postID
+  }, (error, result) => {
+    if (error) {
+      console.log(error);
+    } else {
+      // let post = new data.model.Post(result.toJSON()) //or result.toObject
+      /* you could set a new id
+      post._id = mongoose.Types.ObjectId()
+      post.isNew = true
+      */
+
+      result.remove();
+      // post.save();
+      res.redirect("/deleted");
+
+      // post is now in a better place
+    }
+  })
+});
+
 // -* POST Restore
 app.post("/restore/:postID", function (req, res) {
   console.log(`POST request for Restore ${req.params.postID}`);
   console.log(`\n`);
 
   data.model.Deleted.findOne({
-    '_d': req.params.postID
+    '_id': req.params.postID
   }, (error, result) => {
     if (error) {
       console.log(error);
@@ -332,13 +359,52 @@ app.get("/deleted", function (req, res) { // * OKAY
       console.log(error);
     } else {
       console.log(`ALL DELETED FETCH SUCCESSFUL`);
-      res.render(`modules/deleted`, {
+      res.render(`pages/deleted`, {
         pageHeader: "Deleted",
         entryDBProxy: JSON.stringify(result),
       });
     }
   });
 });
+
+// -* Home Route
+app.get("/:mode", function (req, res) { // * OKAY
+  console.log(`GET request for Home Page ${req.params.mode}`);
+  console.log(`\n`);
+
+  function buildHeaderCalendarPicker() {
+    let min = `1950-01-01`;
+    let max = `2050-12-31`;
+
+    let result = ``;
+    result += `<div class="header--navbar--title--context--date-picker">`;
+    result += `<p></p>`;
+    result += `<input
+    class="header--navbar--title--context--date-picker--input"
+    id="date"
+    name="date"
+    type="date"
+    value="" min="${min}" max="${max}">`;
+    result += `</div>`;
+    return result;
+  }
+
+  // let mode = (req.params.mode != undefined) ? req.params.mode: "month";
+
+  data.model.Post.find({}, (error, result) => {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log(`ALL POSTS FETCH SUCCESSFUL`);
+      res.render(`pages/home`, {
+        pageHeader: buildHeaderCalendarPicker(),
+        entryDBProxy: JSON.stringify(result),
+        mode: req.params.mode
+      });
+    }
+  });
+});
+
 
 // * SERVER LISTENER
 // TODO - Make sure to fix the port number

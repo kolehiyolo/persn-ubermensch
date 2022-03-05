@@ -1,10 +1,12 @@
-.main--deleted {
+&--deleted {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     // flex-direction: column;
     // align-items: stretch;
     gap: 20px;
     padding: 0px 60px;
+    overflow-y: auto;
+
 
     &--post {
         padding: 20px;
@@ -13,6 +15,7 @@
         flex-direction: column;
         gap: 10px;
         border-radius: 5px;
+        box-sizing: border-box;
     }
 
     

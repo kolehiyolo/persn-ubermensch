@@ -12,19 +12,24 @@
     <%- include(`../partials/header`) -%>
 
     <!-- * Main -->
-    <main class="main--deleted">
-        <!-- <p><%=entryDBProxy%></p> -->
+    <main class="main">
+        <div class="main--deleted">
+
+        </div>
     </main>
 
 
     <!-- * Footer -->
     <%- include(`../partials/footer`) -%>
 
+    <script>
+        let deletedDB = <%-entryDBProxy%>;
+    </script>
     <script src="../javascript/client/deleted.js"></script>
 
-    <script>
+    <!-- <script>
         deletedJS.buildAllDeletedHTML( <%-entryDBProxy%> );
-    </script>
+    </script> -->
 </body>
 
 </html>
