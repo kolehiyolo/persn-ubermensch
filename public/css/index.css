@@ -320,9 +320,8 @@ html {
                       background-color: var(--color-background) !important; }
                       html body .main--calendar--carousel--inner--item--month--body--week--day--upper--date {
                         border-radius: 10px;
-                        color: var(--color-primary);
+                        color: white;
                         padding: 0px 10px;
-                        font-weight: bold;
                         font-size: 13px;
                         user-select: none; }
                     html body .main--calendar--carousel--inner--item--month--body--week--day--lower {
@@ -397,15 +396,37 @@ html {
           html body .main--compose--form--body {
             flex-grow: 1;
             display: flex;
-            flex-direction: column;
-            justify-content: stretch; }
-            html body .main--compose--form--body--body {
+            flex-direction: row;
+            justify-content: stretch;
+            gap: 20px; }
+            html body .main--compose--form--body--left {
+              flex-grow: 1;
               display: flex;
               flex-direction: column;
-              justify-content: stretch;
-              flex-grow: 1; }
-              html body .main--compose--form--body--body .compose-body {
-                height: 100%; }
+              justify-content: stretch; }
+              html body .main--compose--form--body--left--body {
+                display: flex;
+                align-self: stretch;
+                flex-direction: column;
+                justify-content: stretch;
+                flex-grow: 1; }
+                html body .main--compose--form--body--left--body .compose-body {
+                  height: 100%; }
+            html body .main--compose--form--body--right {
+              display: flex;
+              flex-direction: column;
+              gap: 20px; }
+              html body .main--compose--form--body--right--date {
+                width: 240px;
+                position: relative; }
+                html body .main--compose--form--body--right--date .fa-calendar-days {
+                  position: absolute;
+                  top: 50%;
+                  right: 20px;
+                  font-size: 24px;
+                  pointer-events: none;
+                  transform: translate(0, -50%);
+                  color: white; }
           html body .main--compose--form--footer {
             display: flex;
             flex-direction: row;
@@ -415,13 +436,13 @@ html {
             html body .main--compose--form--footer--draft button {
               background-color: var(--color-disabled) !important;
               border: none; }
-          html body .main--compose--form .form-group .compose-title, html body .main--compose--form .form-group .compose-date, html body .main--compose--form .form-group .compose-body {
+          html body .main--compose--form .form-group .compose-title, html body .main--compose--form .form-group .compose-theme, html body .main--compose--form .form-group .compose-date, html body .main--compose--form .form-group .compose-body {
             background-color: var(--color-background);
             color: var(--color-text);
             border: solid 2px var(--color-dark); }
-          html body .main--compose--form .form-group .compose-title, html body .main--compose--form .form-group .compose-date, html body .main--compose--form .form-group .compose-submit, html body .main--compose--form .form-group .compose-draft {
+          html body .main--compose--form .form-group .compose-title, html body .main--compose--form .form-group .compose-submit, html body .main--compose--form .form-group .compose-date, html body .main--compose--form .form-group .compose-draft {
             font-size: 25px; }
-          html body .main--compose--form .form-group .compose-body {
+          html body .main--compose--form .form-group .compose-theme, html body .main--compose--form .form-group .compose-body {
             font-size: 14px;
             height: 100%;
             flex-grow: 1; }
@@ -440,7 +461,10 @@ html {
             font-size: 25px; }
           html body .main--post--content--body {
             padding: 6.75px 0px;
-            font-size: 14px; }
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px; }
         html body .main--post--buttons {
           display: flex;
           flex-direction: row;
@@ -460,6 +484,26 @@ html {
           gap: 10px;
           border-radius: 5px;
           box-sizing: border-box; }
+      html body .main .theme--bloodthirst.main--calendar--carousel--inner--item--month--body--week--day {
+        border-color: rgba(255, 0, 0, 0.438);
+        background-color: rgba(255, 0, 0, 0.096); }
+        html body .main .theme--bloodthirst.main--calendar--carousel--inner--item--month--body--week--day .main--calendar--carousel--inner--item--month--body--week--day--upper--date {
+          background-color: rgba(255, 0, 0, 0.219); }
+      html body .main .theme--inferno.main--calendar--carousel--inner--item--month--body--week--day {
+        border-color: rgba(255, 166, 0, 0.431);
+        background-color: rgba(255, 166, 0, 0.103); }
+        html body .main .theme--inferno.main--calendar--carousel--inner--item--month--body--week--day .main--calendar--carousel--inner--item--month--body--week--day--upper--date {
+          background-color: rgba(255, 166, 0, 0.219); }
+      html body .main .theme--radiance.main--calendar--carousel--inner--item--month--body--week--day {
+        border-color: rgba(255, 255, 0, 0.43);
+        background-color: rgba(255, 255, 0, 0.1); }
+        html body .main .theme--radiance.main--calendar--carousel--inner--item--month--body--week--day .main--calendar--carousel--inner--item--month--body--week--day--upper--date {
+          background-color: rgba(255, 255, 0, 0.219); }
+      html body .main .theme--evergreen.main--calendar--carousel--inner--item--month--body--week--day {
+        border-color: rgba(0, 255, 0, 0.43);
+        background-color: rgba(0, 255, 0, 0.1); }
+        html body .main .theme--evergreen.main--calendar--carousel--inner--item--month--body--week--day .main--calendar--carousel--inner--item--month--body--week--day--upper--date {
+          background-color: rgba(0, 255, 0, 0.22); }
     html body .footer {
       padding: 20px 60px;
       display: flex;

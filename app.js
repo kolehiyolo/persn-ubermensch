@@ -3,13 +3,6 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 // const ejs = require("ejs");
-const lodash = require("lodash");
-const {
-  Post
-} = require("./public/javascript/server/data");
-const {
-  result
-} = require("lodash");
 
 // -* Not sure what this does lol
 app.use(bodyParser.urlencoded({
@@ -36,17 +29,10 @@ app.get("/", function (req, res) { // * OKAY
     let min = `1950-01-01`;
     let max = `2050-12-31`;
 
-    let result = ``;
-    result += `<div class="header--navbar--title--context--date-picker">`;
-    result += `<p></p>`;
-    result += `<input
-    class="header--navbar--title--context--date-picker--input"
-    id="date"
-    name="date"
-    type="date"
-    value="" min="${min}" max="${max}">`;
-    result += `</div>`;
-    return result;
+    return `<div class="header--navbar--title--context--date-picker">
+                <p></p>
+                <input class="header--navbar--title--context--date-picker--input" id="date" name="date" type="date" value="" min="${min}" max="${max}">
+              </div>`;
   }
 
   data.model.Post.find({}, (error, result) => {
@@ -140,7 +126,7 @@ app.post("/compose", function (req, res) {
       title: req.body.title,
       body: req.body.body,
       link: "Sample Link",
-      theme: "Sample Theme",
+      theme: req.body.theme,
       status: "Done",
       stamp: stampCombi,
       date: dateCombi,
@@ -171,7 +157,11 @@ app.get("/post/:postDate", function (req, res) {
     } else {
       let post = result[0];
       let postTitle = post.title;
-      let postBody = post.body;
+      let postBody = kolehiyolo.buildParagraphs(post.body);
+
+      console.log(`BUILD ME`);
+      console.log(postBody);
+      // console.log(postBody.slice(0,200)); 
 
       res.render(`pages/post`, {
         pageHeader: req.params.postDate,
@@ -200,7 +190,7 @@ app.get("/edit/:postDate", function (req, res) {
       let postDateArray = post.date.date.code.split("-");
       let postDate = `${postDateArray[0]}-${postDateArray[1]}-${postDateArray[2]}`;
 
-      res.render(`modules/edit`, {
+      res.render(`pages/edit`, {
         pageHeader: req.params.postDate,
         postTitle: postTitle,
         postBody: postBody,
@@ -257,7 +247,7 @@ app.post("/edit", function (req, res) {
     title: req.body.title,
     body: req.body.body,
     link: "Sample Link",
-    theme: "Sample Theme",
+    theme: req.body.theme,
     status: "Done",
     edit: getEditDate()
   }

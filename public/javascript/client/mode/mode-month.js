@@ -127,6 +127,9 @@ calendarMonthJS.buildPageHTML = (currentPage, activeDate) => { // * OKAY
                 // classes += `calendar--day `;
                 classes += `${calendarDayPrefix}__${dayStatus} `;
                 classes += `${calendarDayPrefix} `;
+                if (entry.hasOwnProperty(`post`)) {
+                    classes += `theme--${entry.post.theme}`;
+                }
                 classes += ``;
 
                 let dayDivHTML = `<div class="${classes}" ${onclick}>`;

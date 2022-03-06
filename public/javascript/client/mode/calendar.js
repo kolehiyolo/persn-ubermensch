@@ -207,7 +207,7 @@ calendarJS.getWeekPages = (calendarMonthPages) => { // * OKAY
         // result.push(page.slice(35));
     });
 
-    console.log(result); 
+    // console.log(result); 
     return result;
 }
 

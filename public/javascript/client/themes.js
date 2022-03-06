@@ -1,7 +1,7 @@
 // Red = vermilion
 // Blue = oceanside
 // Green = evergreen
-// Red = oblivion
+// Indigo = oblivion
 
 const themes = [
     {

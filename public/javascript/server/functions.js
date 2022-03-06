@@ -14,6 +14,15 @@ There are many variations of passages of Lorem Ipsum available, but the majority
 
 let global = {};
 
+global.buildParagraphs = (string) => {
+    // let result;
+    // let result = [];
+
+    result = `<p>${string.replace(/\r\n\r\n/gi,'</p><p>')}</p>`
+
+    return result;
+}
+
 global.buildSamples = (count) => {
     console.log(`buildSamples(${count})`);
     let result = [];
@@ -125,6 +134,7 @@ global.codifyTime = (hours, minutes, seconds, timezone) => {
 
 module.exports = {
     // buildSamples: global.buildSamples,
+    buildParagraphs: global.buildParagraphs,
     ellipsize: global.ellipsize,
     codifyDate: global.codifyDate,
     stringifyDate: global.stringifyDate,

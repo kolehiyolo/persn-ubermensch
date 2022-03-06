@@ -1,7 +1,7 @@
 let text = {};
 
 text.ellipsize = (text) => {
-    console.log(`ellipsize(${text})`);
+    // console.log(`ellipsize(${text})`);
     let result = ``;
     let limit = 150;
 
@@ -11,6 +11,6 @@ text.ellipsize = (text) => {
         result = text;
     }
 
-    console.log(`result = ${result}`);
+    // console.log(`result = ${result}`);
     return result;
 };

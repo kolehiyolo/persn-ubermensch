@@ -14,17 +14,17 @@
     <!-- * Main -->
     <main class="main--compose">
         <!-- <h1>Compose</h1> -->
-        <form action="/compose" method="POST" class="main--compose--form">
+        <form action="/edit" method="POST" class="main--compose--form">
             <div class="main--compose--form--header">
                 <div class="main--compose--form--header--title form-group">
                     <!-- <label class="form-label" for="title">Title</label> -->
-                    <input class="form-control compose-title" id="title" name="title" type="text" placeholder="Write your title here...">
+                    <input class="form-control compose-title" id="title" name="title" type="text" placeholder="Write your title here..." value="<%=postTitle%>">
                 </div>
             </div>
             <div class="main--compose--form--body">
                 <div class="main--compose--form--body--left">
                     <div class="main--compose--form--body--left--body form-group">
-                        <textarea class="form-control compose-body" id="body" name="body" placeholder="Write your thoughts here..."></textarea>
+                        <textarea class="form-control compose-body" id="body" name="body" placeholder="Write your thoughts here..."><%=postBody%></textarea>
                     </div>
                 </div>
                 <div class="main--compose--form--body--right">

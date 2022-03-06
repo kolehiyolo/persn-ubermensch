@@ -84,6 +84,9 @@ html {
             // * Deleted Components
             @import "main/deleted.scss";
 
+            // * Theme Components
+            @import "partials/themes.scss";
+
         }
 
         // * Footer

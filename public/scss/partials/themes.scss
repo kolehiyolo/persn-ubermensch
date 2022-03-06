@@ -1,0 +1,71 @@
+.theme {
+    &--bloodthirst {
+        &.main--calendar--carousel--inner--item--month--body--week--day {
+            border-color: rgba(255, 0, 0, 0.438);
+            background-color: rgba(255, 0, 0, 0.096);
+
+            .main--calendar--carousel--inner--item--month--body--week--day--upper {
+                &--date {
+                    // color: red;
+                    background-color: rgba(255, 0, 0, 0.219);
+                }
+            }
+            .main--calendar--carousel--inner--item--month--body--week--day--lower {
+            }
+        }
+    }
+    &--inferno {
+        &.main--calendar--carousel--inner--item--month--body--week--day {
+            border-color: rgba(255, 166, 0, 0.431);
+            background-color: rgba(255, 166, 0, 0.103);
+
+            .main--calendar--carousel--inner--item--month--body--week--day--upper {
+                &--date {
+                    // color: orange;
+                    background-color: rgba(255, 166, 0, 0.219);
+                }
+            }
+            .main--calendar--carousel--inner--item--month--body--week--day--lower {
+            }
+        }
+    }
+    &--radiance {
+        &.main--calendar--carousel--inner--item--month--body--week--day {
+            border-color: rgba(255, 255, 0, 0.430);
+            background-color: rgba(255, 255, 0, 0.100);
+
+            .main--calendar--carousel--inner--item--month--body--week--day--upper {
+                &--date {
+                    // color: yellow;
+                    background-color: rgba(255, 255, 0, 0.219);
+                }
+            }
+            .main--calendar--carousel--inner--item--month--body--week--day--lower {
+            }
+        }
+    }
+    &--evergreen {
+        &.main--calendar--carousel--inner--item--month--body--week--day {
+            border-color: rgba(0, 255, 0, 0.430);
+            background-color: rgba(0, 255, 0, 0.100);
+
+            .main--calendar--carousel--inner--item--month--body--week--day--upper {
+                &--date {
+                    // color: yellow;
+                    background-color: rgba(0, 255, 0, 0.220);
+                }
+            }
+            .main--calendar--carousel--inner--item--month--body--week--day--lower {
+            }
+        }
+    }
+    &--frostbite {
+
+    }
+    &--pacific {
+
+    }
+    &--oblivion {
+
+    }
+}

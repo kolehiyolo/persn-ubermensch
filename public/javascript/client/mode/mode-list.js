@@ -5,12 +5,12 @@ modeListJS.buildPageHTML = () => {
 
     let sortedPosts = modeListJS.sortByDate(entryDB);
 
-    console.log(`sortedPosts:`);
-    console.log(sortedPosts);
+    // console.log(`sortedPosts:`);
+    // console.log(sortedPosts);
 
-    sortedPosts.forEach((post, index) => {
-        console.log(`${index} = ${post.title} ${post.date.date.code}`);
-    })
+    // sortedPosts.forEach((post, index) => {
+    //     // console.log(`${index} = ${post.title} ${post.date.date.code}`);
+    // })
 
     function postsDiv(sortedPosts) {
         let result = ``;
@@ -49,7 +49,7 @@ modeListJS.buildPageHTML = () => {
 };
 
 modeListJS.sortByDate = (posts) => {
-    console.log(posts);
+    // console.log(posts);
 
     let result = [JSON.parse(JSON.stringify(posts[0]))];
     // console.log(`result`); 
